@@ -1,0 +1,10 @@
+{
+  "jhipsterSiteApp": {
+    "AttachedType": {
+      "null": "",
+      "PDF": "PDF",
+      "IMAGE": "IMAGE",
+      "RAR": "RAR"
+    }
+  }
+}

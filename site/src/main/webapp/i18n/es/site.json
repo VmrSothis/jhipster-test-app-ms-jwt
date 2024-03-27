@@ -1,0 +1,37 @@
+{
+  "jhipsterSiteApp": {
+    "site": {
+      "home": {
+        "title": "Sites",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Site",
+        "createOrEditLabel": "Crear o editar Site",
+        "notFound": "Ningún Sites encontrado"
+      },
+      "created": "Un nuevo Site ha sido creado con el identificador {{ param }}",
+      "updated": "Un Site ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Site ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Site {{ id }}?"
+      },
+      "detail": {
+        "title": "Site"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "name": "Name",
+      "description": "Description",
+      "email": "Email",
+      "telephone": "Telephone",
+      "address": "Address",
+      "postalCode": "Postal Code",
+      "region": "Region",
+      "locality": "Locality",
+      "country": "Country",
+      "location": "Location",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "organization": "Organization"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "generator-jhipster": {
+    "baseName": "jhipsterSite",
+    "clientFramework": "angular",
+    "clientTestFrameworks": [],
+    "clientTheme": "none",
+    "creationTimestamp": 1711547631148,
+    "databaseType": "postgresql",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 4200,
+    "enableTranslation": true,
+    "entities": ["Organization", "Site", "Plant", "PlantArea", "Machine", "MachineModel", "MachineDocumentation"],
+    "jhipsterVersion": "8.1.0",
+    "languages": ["es", "en"],
+    "lastLiquibaseTimestamp": 1711548051000,
+    "microfrontend": null,
+    "microfrontends": [],
+    "monorepository": true,
+    "nativeLanguage": "es",
+    "prodDatabaseType": "postgresql",
+    "skipCommitHook": true,
+    "skipServer": true,
+    "testFrameworks": [],
+    "withAdminUi": true
+  }
+}

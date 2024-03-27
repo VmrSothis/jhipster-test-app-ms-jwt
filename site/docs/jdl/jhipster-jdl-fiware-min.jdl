@@ -1,0 +1,106 @@
+enum AttachedType {
+  PDF, IMAGE, RAR
+}
+
+entity Organization {
+  reference String required,
+  name String required,
+  legalName String,
+  description String,
+  taxId String,
+  email String,
+  telephone String,
+  url String,
+  address String,
+  postalCode String,
+  region String,
+  locality String,
+  country String,
+  location String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity Site {
+  reference String required,
+  name String required,
+  description String,
+  email String,
+  telephone String,
+  address String,
+  postalCode String,
+  region String,
+  locality String,
+  country String,
+  location String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime,
+}
+
+entity Plant {
+  reference String required,
+  name String required,
+  description String required,
+  address String,
+  location String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity PlantArea {
+  reference String required,
+  name String required,
+  description String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity Machine {
+  reference String required,
+  name String required,
+  description String,
+  firmwareVersion String,
+  hardwareVersion String,
+  softwareVersion String,
+  serialNumber String,
+  supportedProtocol String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity MachineModel {
+  reference String required,
+  name String required,
+  brandName String required,
+  description String,
+  type String,
+  manufacurerName String,
+  version String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity MachineDocumentation {
+  reference String required,
+  name String required,
+  type AttachedType,
+  description String,
+  url String
+}
+
+relationship OneToMany {
+  Organization{Machine} to Machine
+}
+relationship ManyToOne {
+  Site{Organization(name) required} to Organization,
+  Plant{Site(name) required} to Site,
+  PlantArea{Plant(name) required} to Plant,
+  Machine{PlantArea(name) required} to PlantArea,
+  Machine{MachineModel(name) required} to MachineModel,
+  MachineDocumentation{Machine(name) required} to Machine,
+}
+
+paginate all with pagination
+dto * with mapstruct
+service all with serviceImpl
+filter *

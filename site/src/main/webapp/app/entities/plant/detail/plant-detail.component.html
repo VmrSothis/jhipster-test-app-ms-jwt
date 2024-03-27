@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (plant) {
+      <div>
+        <h2 data-cy="plantDetailsHeading"><span jhiTranslate="jhipsterSiteApp.plant.detail.title">Plant</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ plant.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.reference">Reference</span></dt>
+          <dd>
+            <span>{{ plant.reference }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.name">Name</span></dt>
+          <dd>
+            <span>{{ plant.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.description">Description</span></dt>
+          <dd>
+            <span>{{ plant.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.address">Address</span></dt>
+          <dd>
+            <span>{{ plant.address }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.location">Location</span></dt>
+          <dd>
+            <span>{{ plant.location }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.createdAt">Created At</span></dt>
+          <dd>
+            <span>{{ plant.createdAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.updatedAt">Updated At</span></dt>
+          <dd>
+            <span>{{ plant.updatedAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plant.site">Site</span></dt>
+          <dd>
+            @if (plant.site) {
+              <div>
+                <a [routerLink]="['/site', plant.site.id, 'view']">{{ plant.site.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/plant', plant.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

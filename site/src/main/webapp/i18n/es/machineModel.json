@@ -1,0 +1,32 @@
+{
+  "jhipsterSiteApp": {
+    "machineModel": {
+      "home": {
+        "title": "Machine Models",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Machine Model",
+        "createOrEditLabel": "Crear o editar Machine Model",
+        "notFound": "Ningún Machine Models encontrado"
+      },
+      "created": "Un nuevo Machine Model ha sido creado con el identificador {{ param }}",
+      "updated": "Un Machine Model ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Machine Model ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Machine Model {{ id }}?"
+      },
+      "detail": {
+        "title": "Machine Model"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "name": "Name",
+      "brandName": "Brand Name",
+      "description": "Description",
+      "type": "Type",
+      "manufacurerName": "Manufacurer Name",
+      "version": "Version",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    }
+  }
+}

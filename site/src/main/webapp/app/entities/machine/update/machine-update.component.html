@@ -1,0 +1,241 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-machine-heading" data-cy="MachineCreateUpdateHeading" jhiTranslate="jhipsterSiteApp.machine.home.createOrEditLabel">
+        Crear o editar Machine
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.reference" for="field_reference">Reference</label>
+          <input type="text" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+          @if (editForm.get('reference')!.invalid && (editForm.get('reference')!.dirty || editForm.get('reference')!.touched)) {
+            <div>
+              @if (editForm.get('reference')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          @if (editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)) {
+            <div>
+              @if (editForm.get('name')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.firmwareVersion" for="field_firmwareVersion"
+            >Firmware Version</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="firmwareVersion"
+            id="field_firmwareVersion"
+            data-cy="firmwareVersion"
+            formControlName="firmwareVersion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.hardwareVersion" for="field_hardwareVersion"
+            >Hardware Version</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hardwareVersion"
+            id="field_hardwareVersion"
+            data-cy="hardwareVersion"
+            formControlName="hardwareVersion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.softwareVersion" for="field_softwareVersion"
+            >Software Version</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="softwareVersion"
+            id="field_softwareVersion"
+            data-cy="softwareVersion"
+            formControlName="softwareVersion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.serialNumber" for="field_serialNumber">Serial Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="serialNumber"
+            id="field_serialNumber"
+            data-cy="serialNumber"
+            formControlName="serialNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.supportedProtocol" for="field_supportedProtocol"
+            >Supported Protocol</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supportedProtocol"
+            id="field_supportedProtocol"
+            data-cy="supportedProtocol"
+            formControlName="supportedProtocol"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.createdAt" for="field_createdAt">Created At</label>
+          <div class="d-flex">
+            <input
+              id="field_createdAt"
+              data-cy="createdAt"
+              type="datetime-local"
+              class="form-control"
+              name="createdAt"
+              formControlName="createdAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.updatedAt" for="field_updatedAt">Updated At</label>
+          <div class="d-flex">
+            <input
+              id="field_updatedAt"
+              data-cy="updatedAt"
+              type="datetime-local"
+              class="form-control"
+              name="updatedAt"
+              formControlName="updatedAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.plantArea" for="field_plantArea">Plant Area</label>
+          <select
+            class="form-control"
+            id="field_plantArea"
+            data-cy="plantArea"
+            name="plantArea"
+            formControlName="plantArea"
+            [compareWith]="comparePlantArea"
+          >
+            @if (!editForm.get('plantArea')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (plantAreaOption of plantAreasSharedCollection; track $index) {
+              <option [ngValue]="plantAreaOption">{{ plantAreaOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['plantArea'])!.invalid && (editForm.get(['plantArea'])!.dirty || editForm.get(['plantArea'])!.touched)) {
+          <div>
+            @if (editForm.get(['plantArea'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.machineModel" for="field_machineModel">Machine Model</label>
+          <select
+            class="form-control"
+            id="field_machineModel"
+            data-cy="machineModel"
+            name="machineModel"
+            formControlName="machineModel"
+            [compareWith]="compareMachineModel"
+          >
+            @if (!editForm.get('machineModel')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (machineModelOption of machineModelsSharedCollection; track $index) {
+              <option [ngValue]="machineModelOption">{{ machineModelOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['machineModel'])!.invalid && (editForm.get(['machineModel'])!.dirty || editForm.get(['machineModel'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['machineModel'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSiteApp.machine.organization" for="field_organization">Organization</label>
+          <select
+            class="form-control"
+            id="field_organization"
+            data-cy="organization"
+            name="organization"
+            formControlName="organization"
+            [compareWith]="compareOrganization"
+          >
+            <option [ngValue]="null"></option>
+            @for (organizationOption of organizationsSharedCollection; track $index) {
+              <option [ngValue]="organizationOption">{{ organizationOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "jhipsterSiteApp": {
+    "machineDocumentation": {
+      "home": {
+        "title": "Machine Documentations",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Machine Documentation",
+        "createOrEditLabel": "Crear o editar Machine Documentation",
+        "notFound": "Ningún Machine Documentations encontrado"
+      },
+      "created": "Un nuevo Machine Documentation ha sido creado con el identificador {{ param }}",
+      "updated": "Un Machine Documentation ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Machine Documentation ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Machine Documentation {{ id }}?"
+      },
+      "detail": {
+        "title": "Machine Documentation"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "name": "Name",
+      "type": "Type",
+      "description": "Description",
+      "url": "Url",
+      "machine": "Machine"
+    }
+  }
+}

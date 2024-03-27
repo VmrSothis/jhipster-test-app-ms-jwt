@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (machineModel) {
+      <div>
+        <h2 data-cy="machineModelDetailsHeading"><span jhiTranslate="jhipsterSiteApp.machineModel.detail.title">Machine Model</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ machineModel.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.reference">Reference</span></dt>
+          <dd>
+            <span>{{ machineModel.reference }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.name">Name</span></dt>
+          <dd>
+            <span>{{ machineModel.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.brandName">Brand Name</span></dt>
+          <dd>
+            <span>{{ machineModel.brandName }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.description">Description</span></dt>
+          <dd>
+            <span>{{ machineModel.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.type">Type</span></dt>
+          <dd>
+            <span>{{ machineModel.type }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.manufacurerName">Manufacurer Name</span></dt>
+          <dd>
+            <span>{{ machineModel.manufacurerName }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.version">Version</span></dt>
+          <dd>
+            <span>{{ machineModel.version }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.createdAt">Created At</span></dt>
+          <dd>
+            <span>{{ machineModel.createdAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineModel.updatedAt">Updated At</span></dt>
+          <dd>
+            <span>{{ machineModel.updatedAt | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/machine-model', machineModel.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

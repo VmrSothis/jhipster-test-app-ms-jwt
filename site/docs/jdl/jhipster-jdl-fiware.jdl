@@ -1,0 +1,363 @@
+/**
+ * CONSTANTES DE CONFIGURACIÓN
+ * ===========================
+ */
+ 
+STR_LONGITUD_CODIGO = 3 
+STR_LONGITUD_CORTA = 20
+STR_LONGITUD_MEDIA = 100
+STR_LONGITUD_LARGA = 250
+STR_LONGITUD_MAXIMA = 3500
+
+enum Type {
+  INTEGER, FLOAT, STRING, BOOLEAN, DATETIME 
+}
+enum SubscriptionEntityField {
+  ID, IDPATTERN, ALL
+}
+enum SubscriptionFieldType {
+  TYPE, TYPEPATTERN 
+}
+enum SubscriptionNotificationType {
+  ATTRS, EXCEPTATTRS, ALL
+}
+enum SubscriptionProtocol {
+  HTTP, MQTT, HTTPCUSTOM, MQTTCUSTOM 
+}
+enum SubscriptionAttrsFormat {
+  NORMALIZED, SIMPLIFIEDNORMALIZED, KEYVALUES, SIMPLIFIEDKEYVALUES, VALUES, LEGACY
+}
+enum AttachedType {
+  PDF, IMAGE, RAR
+}
+enum DeviceAttrType {
+  MEASUREMENT, ALERT, CONFIG, INFO, OTHER
+}
+enum LogLevel {
+  INFO, DEBUG, WARNING, ERROR, CRITICAL
+}
+
+entity Organization {
+  reference String required,
+  name String required,
+  legalName String,
+  description String,
+  taxId String,
+  email String,
+  telephone String,
+  url String,
+  address String,
+  postalCode String,
+  region String,
+  locality String,
+  country String,
+  location String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity Site {
+  reference String required,
+  name String required,
+  description String,
+  email String,
+  telephone String,
+  address String,
+  postalCode String,
+  region String,
+  locality String,
+  country String,
+  location String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime,
+}
+
+entity Plant {
+  reference String required,
+  name String required,
+  description String required,
+  address String,
+  location String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity PlantArea {
+  reference String required,
+  name String required,
+  description String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity Machine {
+  reference String required,
+  name String required,
+  description String,
+  firmwareVersion String,
+  hardwareVersion String,
+  softwareVersion String,
+  serialNumber String,
+  supportedProtocol String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity MachineModel {
+  reference String required,
+  name String required,
+  brandName String required,
+  description String,
+  type String,
+  manufacurerName String,
+  version String,
+  createdAt ZonedDateTime,
+  updatedAt ZonedDateTime
+}
+
+entity MachineDocumentation {
+  reference String required,
+  name String required,
+  type AttachedType,
+  description String,
+  url String
+}
+
+entity Service {
+  fService String required,
+  fSubService String required,
+  resource String required,
+  apiKey String required,
+  timestamp Boolean,
+  entityType String required,
+  trust String,
+  cbHost String,
+  explicitAttrs String,
+  entityNameExp String,
+  ngsiVersion String,
+  defaultEntityNameConjunction String,
+  autoprovision Boolean,
+  transport String,
+  endpoint String,
+  
+  createAt ZonedDateTime,
+  deleteAt ZonedDateTime,
+  updateAt ZonedDateTime
+}
+
+entity Device {
+  deviceId String required,
+  fService String required,
+  fServicePath String required,
+  entityName String required,
+  /*entityType String required, sustituido por DeviceType entity*/
+  timezone String,
+  timestamp String,
+  apiKey String,
+  endpoint String,
+  protocol String,
+  transport String,
+  trust String,
+  cbHost String,
+  resource String,
+  explicitAttrs Boolean,
+  autoprovision Boolean,
+  
+  createAt ZonedDateTime,
+  deleteAt ZonedDateTime,
+  updateAt ZonedDateTime
+}
+
+entity DeviceAttr {
+  //device attrs
+  objectId String required,
+  name String required,
+  type Type required,
+  //fin device attrs
+  value String required,
+  maxVal Integer,
+  minVal Integer,
+  unitMeasurement String,
+  deviceAttrType DeviceAttrType,
+  updatedAt ZonedDateTime,
+  createAt ZonedDateTime
+}
+
+entity DeviceAttrMetadata {
+  name String required,
+  type Type required,
+  value String required,
+}
+
+entity DeviceModel {
+  reference String required,
+  name String required,
+  brandName String,
+  manufacturerName String,
+  updatedAt ZonedDateTime,
+  createAt ZonedDateTime
+}
+
+entity DeviceTemplate {
+  reference String required,
+  name String required,
+  version String required,
+  updatedAt ZonedDateTime,
+  createAt ZonedDateTime
+}
+
+entity DeviceTemplateType {
+  reference String required,
+  name String required,
+  updatedAt ZonedDateTime,
+  createAt ZonedDateTime
+}
+
+entity Product {
+  productId String required,
+  name String required,
+  description String required,
+  serialNumber String required,
+  createAt ZonedDateTime,
+  manufacturingStartAt ZonedDateTime,
+  manufacturingEndAt ZonedDateTime
+}
+
+entity ProductModel {
+  objectId String required,
+  name String required,
+  type String required,
+  category String
+}
+
+entity ProductCategory {
+  name String required,
+  type String required
+}
+//https://github.com/telefonicaid/fiware-orion/blob/master/doc/manuals/orion-api.md#subscriptions-operations
+entity SubscriptionCore {
+  subscriptionId String required,
+  name String required,
+  description String maxlength(1024),
+  expires ZonedDateTime,
+  status Boolean required,
+  throttling Integer min(0)
+}
+
+entity SubscriptionSubject {
+  subEntityField SubscriptionEntityField required,
+  entityField String required,
+  subTypeField SubscriptionFieldType,
+  typeField String
+}
+
+entity SubscriptionSubjectCondition {
+  attrs String, //array de atributos
+  expression String //"expression": {"q": "temperature>40"}
+}
+
+entity SubscriptionNotification {
+  subscriptionNotificationType SubscriptionNotificationType required,
+  attrs String, //array de atributos
+  exceptAttrs String, //array de atributos
+  protocol SubscriptionProtocol required,
+  attrsFormat SubscriptionAttrsFormat,
+  onlyChangedAttrs Boolean,
+  //readOnly
+  timesSent Integer,
+  lastNotification ZonedDateTime,
+  lastFailure ZonedDateTime,
+  lastSuccess ZonedDateTime,
+  lastFailureReason String,
+  lastSuccessCode Integer,
+  failsCounter Integer,
+  
+  maxFailsLimit Integer
+}
+
+entity SubscriptionNotificationProtocol {
+  url String required,
+  timeout Integer,
+  topic String,
+  user String,
+  passwd String
+}
+
+entity OrganizationConfig {
+  primaryColor String,
+  secondaryColor String,
+  darkMode Boolean,
+  logo ImageBlob
+}
+
+entity OPCUADriver {
+  reference String required,
+  logLevel LogLevel,
+  endpointUrl String,
+  securityPolicyUri String,
+  user String,
+  passwd String
+}
+
+entity OPCUALogger {
+  reference String required,
+  host String,
+  port String,
+  ssl String,
+  topic String,
+  logLevel LogLevel,
+  maxMessageSizeKb Integer,
+  user String,
+  passwd String
+}
+
+entity OPCUALoggerTopic {
+  topic String required
+}
+
+/**
+ * RELACIONES
+ * ==========
+ */
+relationship OneToMany {
+  Organization{Machine} to Machine
+  SubscriptionCore{SubscriptionSubject} to SubscriptionSubject
+  SubscriptionCore{SubscriptionNotification} to SubscriptionNotification
+  DeviceAttr{DeviceAttrMetadata} to DeviceAttrMetadata
+  OPCUADriver{OPCUALogger} to OPCUALogger
+  OPCUALogger{OPCUALoggerTopic} to OPCUALoggerTopic
+  DeviceTemplate{DeviceTemplateType(reference)} to DeviceTemplateType
+}
+relationship ManyToOne {
+  Site{Organization(name) required} to Organization,
+  Plant{Site(name) required} to Site,
+  PlantArea{Plant(name) required} to Plant,
+  Machine{PlantArea(name) required} to PlantArea,
+  Machine{MachineModel(name) required} to MachineModel,
+  MachineDocumentation{Machine(name) required} to Machine,
+  Device{Machine(name) required} to Machine,
+  Device{Service(subService) required} to Service,
+  Device{DeviceModel(name) required} to DeviceModel,
+  DeviceAttr{Device(deviceId) required} to Device,
+  Product{ProductModel(name) required} to ProductModel,
+  ProductModel{Plant(name) required} to Plant,
+  ProductModel{ProductCategory(name)} to ProductCategory,
+  SubscriptionCore{Machine(name) required} to Machine
+  DeviceTemplate{Plant(reference)} to Plant
+  DeviceTemplate{PlantArea(reference)} to PlantArea
+  DeviceTemplate{Machine(reference)} to Machine
+}
+relationship ManyToMany {
+  Product{Device(deviceId)} to Device{product}
+  DeviceTemplate{Device(deviceId)} to Device{deviceTemplate}
+}
+relationship OneToOne {
+  SubscriptionNotification{subscriptionNotificationProtocol} to SubscriptionNotificationProtocol,
+  SubscriptionSubject{subscriptionSubjectCondition} to SubscriptionSubjectCondition,
+  Organization{OrganizationConfig} to OrganizationConfig
+}
+
+paginate all with pagination
+dto * with mapstruct
+service all with serviceImpl
+filter *

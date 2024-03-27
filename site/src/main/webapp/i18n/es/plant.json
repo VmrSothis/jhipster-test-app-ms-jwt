@@ -1,0 +1,31 @@
+{
+  "jhipsterSiteApp": {
+    "plant": {
+      "home": {
+        "title": "Plants",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Plant",
+        "createOrEditLabel": "Crear o editar Plant",
+        "notFound": "Ningún Plants encontrado"
+      },
+      "created": "Un nuevo Plant ha sido creado con el identificador {{ param }}",
+      "updated": "Un Plant ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Plant ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Plant {{ id }}?"
+      },
+      "detail": {
+        "title": "Plant"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "name": "Name",
+      "description": "Description",
+      "address": "Address",
+      "location": "Location",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "site": "Site"
+    }
+  }
+}

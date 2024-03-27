@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (site) {
+      <div>
+        <h2 data-cy="siteDetailsHeading"><span jhiTranslate="jhipsterSiteApp.site.detail.title">Site</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ site.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.reference">Reference</span></dt>
+          <dd>
+            <span>{{ site.reference }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.name">Name</span></dt>
+          <dd>
+            <span>{{ site.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.description">Description</span></dt>
+          <dd>
+            <span>{{ site.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.email">Email</span></dt>
+          <dd>
+            <span>{{ site.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.telephone">Telephone</span></dt>
+          <dd>
+            <span>{{ site.telephone }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.address">Address</span></dt>
+          <dd>
+            <span>{{ site.address }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.postalCode">Postal Code</span></dt>
+          <dd>
+            <span>{{ site.postalCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.region">Region</span></dt>
+          <dd>
+            <span>{{ site.region }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.locality">Locality</span></dt>
+          <dd>
+            <span>{{ site.locality }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.country">Country</span></dt>
+          <dd>
+            <span>{{ site.country }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.location">Location</span></dt>
+          <dd>
+            <span>{{ site.location }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.createdAt">Created At</span></dt>
+          <dd>
+            <span>{{ site.createdAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.updatedAt">Updated At</span></dt>
+          <dd>
+            <span>{{ site.updatedAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.site.organization">Organization</span></dt>
+          <dd>
+            @if (site.organization) {
+              <div>
+                <a [routerLink]="['/organization', site.organization.id, 'view']">{{ site.organization.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/site', site.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

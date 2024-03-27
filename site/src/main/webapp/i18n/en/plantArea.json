@@ -1,0 +1,29 @@
+{
+  "jhipsterSiteApp": {
+    "plantArea": {
+      "home": {
+        "title": "Plant Areas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Plant Area",
+        "createOrEditLabel": "Create or edit a Plant Area",
+        "notFound": "No Plant Areas found"
+      },
+      "created": "A new Plant Area is created with identifier {{ param }}",
+      "updated": "A Plant Area is updated with identifier {{ param }}",
+      "deleted": "A Plant Area is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Plant Area {{ id }}?"
+      },
+      "detail": {
+        "title": "Plant Area"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "name": "Name",
+      "description": "Description",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "plant": "Plant"
+    }
+  }
+}

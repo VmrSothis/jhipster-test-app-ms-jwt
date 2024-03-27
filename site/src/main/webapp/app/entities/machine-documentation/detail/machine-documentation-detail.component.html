@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (machineDocumentation) {
+      <div>
+        <h2 data-cy="machineDocumentationDetailsHeading">
+          <span jhiTranslate="jhipsterSiteApp.machineDocumentation.detail.title">Machine Documentation</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ machineDocumentation.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineDocumentation.reference">Reference</span></dt>
+          <dd>
+            <span>{{ machineDocumentation.reference }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineDocumentation.name">Name</span></dt>
+          <dd>
+            <span>{{ machineDocumentation.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineDocumentation.type">Type</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'jhipsterSiteApp.AttachedType.' + machineDocumentation.type }}">{{ machineDocumentation.type }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineDocumentation.description">Description</span></dt>
+          <dd>
+            <span>{{ machineDocumentation.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineDocumentation.url">Url</span></dt>
+          <dd>
+            <span>{{ machineDocumentation.url }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.machineDocumentation.machine">Machine</span></dt>
+          <dd>
+            @if (machineDocumentation.machine) {
+              <div>
+                <a [routerLink]="['/machine', machineDocumentation.machine.id, 'view']">{{ machineDocumentation.machine.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/machine-documentation', machineDocumentation.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

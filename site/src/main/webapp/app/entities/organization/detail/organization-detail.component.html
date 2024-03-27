@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (organization) {
+      <div>
+        <h2 data-cy="organizationDetailsHeading"><span jhiTranslate="jhipsterSiteApp.organization.detail.title">Organization</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ organization.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.reference">Reference</span></dt>
+          <dd>
+            <span>{{ organization.reference }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.name">Name</span></dt>
+          <dd>
+            <span>{{ organization.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.legalName">Legal Name</span></dt>
+          <dd>
+            <span>{{ organization.legalName }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.description">Description</span></dt>
+          <dd>
+            <span>{{ organization.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.taxId">Tax Id</span></dt>
+          <dd>
+            <span>{{ organization.taxId }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.email">Email</span></dt>
+          <dd>
+            <span>{{ organization.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.telephone">Telephone</span></dt>
+          <dd>
+            <span>{{ organization.telephone }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.url">Url</span></dt>
+          <dd>
+            <span>{{ organization.url }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.address">Address</span></dt>
+          <dd>
+            <span>{{ organization.address }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.postalCode">Postal Code</span></dt>
+          <dd>
+            <span>{{ organization.postalCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.region">Region</span></dt>
+          <dd>
+            <span>{{ organization.region }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.locality">Locality</span></dt>
+          <dd>
+            <span>{{ organization.locality }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.country">Country</span></dt>
+          <dd>
+            <span>{{ organization.country }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.location">Location</span></dt>
+          <dd>
+            <span>{{ organization.location }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.createdAt">Created At</span></dt>
+          <dd>
+            <span>{{ organization.createdAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.organization.updatedAt">Updated At</span></dt>
+          <dd>
+            <span>{{ organization.updatedAt | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/organization', organization.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

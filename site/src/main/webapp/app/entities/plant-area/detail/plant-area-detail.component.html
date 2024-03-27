@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (plantArea) {
+      <div>
+        <h2 data-cy="plantAreaDetailsHeading"><span jhiTranslate="jhipsterSiteApp.plantArea.detail.title">Plant Area</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ plantArea.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plantArea.reference">Reference</span></dt>
+          <dd>
+            <span>{{ plantArea.reference }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plantArea.name">Name</span></dt>
+          <dd>
+            <span>{{ plantArea.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plantArea.description">Description</span></dt>
+          <dd>
+            <span>{{ plantArea.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plantArea.createdAt">Created At</span></dt>
+          <dd>
+            <span>{{ plantArea.createdAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plantArea.updatedAt">Updated At</span></dt>
+          <dd>
+            <span>{{ plantArea.updatedAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSiteApp.plantArea.plant">Plant</span></dt>
+          <dd>
+            @if (plantArea.plant) {
+              <div>
+                <a [routerLink]="['/plant', plantArea.plant.id, 'view']">{{ plantArea.plant.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/plant-area', plantArea.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

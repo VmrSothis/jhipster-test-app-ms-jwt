@@ -19,8 +19,8 @@
       },
       "id": "ID",
       "reference": "Reference",
-      "name": "Name",
-      "legalName": "Legal Name",
+      "name": "Nombre Usuario",
+      "legalName": "Nombre",
       "description": "Description",
       "taxId": "Tax Id",
       "email": "Email",
@@ -32,9 +32,10 @@
       "locality": "Locality",
       "country": "Country",
       "location": "Location",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
-      "machine": "Machine"
+      "createdAt": "Fecha de Alta",
+      "updatedAt": "Última Conexión",
+      "machine": "Machine",
+      "company":"Empresa"
     }
   }
 }

@@ -1,6 +1,7 @@
 @import 'bootstrap-variables';
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
+@import './content/scss/variables';
 
 /* ==============================================================
 Bootstrap tweaks
@@ -218,6 +219,11 @@ ui bootstrap tweaks
 /* ==========================================================================
 angular-cli removes postcss-rtl processed inline css, processed rules must be added here instead
 ========================================================================== */
+body {
+  min-width: 480px;
+}
+
+
 /* page-ribbon.component.scss */
 .ribbon {
   left: -3.5em;
@@ -237,3 +243,106 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
   }
 }
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+
+.page_body.sidenav_opened {
+  margin-right: 60px;
+}
+
+
+table.table {
+  background-color: white!important;
+  border-collapse: separate;
+  border-spacing: 0px 15px;
+  color: $green_list_item;
+  font-weight: 500;
+  min-width: 480px;
+
+  tbody {
+    background-color: white!important;
+  }
+
+  thead tr th{
+    color: $grey_txt;
+    font-weight: 400;
+    border: 0px;
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+  tr {
+    margin: 10px!important;
+
+    th {
+      :first-of-type {
+        margin-left: 10px;
+      }
+    }
+
+    td {
+      background-color: $green_list_item!important;
+
+      span {
+        width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      * {
+        display: flex;
+      }
+
+      :first-of-type {
+        margin-left: 20px;
+      }
+
+      .table-icon {
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+    }
+
+
+    td:first-of-type {
+      border-radius: 30px 0 0 30px;
+    }
+
+    td:nth-last-child(0) {
+      border-radius: 30px 0 0 30px;
+    }
+  }
+}
+
+.list-operations {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+
+  .breadcrumbs {
+    display: flex;
+    flex:1;
+    font-size: 14px;
+    font-weight: 400px;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+
+    .breadcrumb-separator {
+      margin: 0 2px;
+    }
+  }
+  
+  button {
+    border: 0;
+    background-color: transparent;
+    
+    .fa-icon {
+      
+    }
+  }
+}

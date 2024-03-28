@@ -7,13 +7,14 @@ import { AccountService } from 'app/core/auth/account.service';
 import { AppPageTitleStrategy } from 'app/app-page-title-strategy';
 import FooterComponent from '../footer/footer.component';
 import PageRibbonComponent from '../profiles/page-ribbon.component';
+import { SideNavbarComponent } from '../side-navbar/side-navbar.component';
 
 @Component({
   selector: 'jhi-main',
   standalone: true,
   templateUrl: './main.component.html',
   providers: [AppPageTitleStrategy],
-  imports: [RouterOutlet, FooterComponent, PageRibbonComponent],
+  imports: [RouterOutlet, FooterComponent, PageRibbonComponent, SideNavbarComponent],
 })
 export default class MainComponent implements OnInit {
   private renderer: Renderer2;

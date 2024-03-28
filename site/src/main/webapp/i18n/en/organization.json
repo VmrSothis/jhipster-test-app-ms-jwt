@@ -34,7 +34,8 @@
       "location": "Location",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
-      "machine": "Machine"
+      "machine": "Machine",
+      "empresa": "Company"
     }
   }
 }

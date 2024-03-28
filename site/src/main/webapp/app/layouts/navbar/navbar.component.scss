@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
+@import './content/scss/variables';
 
 /* ==========================================================================
 Navbar
@@ -33,4 +34,80 @@ Logo styles
   vertical-align: middle;
   background: url('/content/images/logo-jhipster.png') no-repeat center center;
   background-size: contain;
+}
+
+nav {
+  position: relative;
+  background-color: $grey_bg;
+  color: $grey_dark_txt;
+
+  .nav-link {
+    color: $grey_dark_txt;
+  }
+}
+
+#navbar-top {
+    display: flex;
+    align-items: center;
+
+    .nav-left, .nav-right {
+      flex: 1;
+    }
+
+  .centered-logo {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+  
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .list-options {
+
+  }
+
+  .user-info-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    div {
+      margin: 5px;
+    }
+
+    .user-block {
+      width: 150px;
+
+      .user-profile-img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .info-block {
+      display: flex;
+      button {
+        border: 0;
+        background-color: $grey_bg;
+
+        :hover {
+          background-color: $grey_hover;
+          border-radius: 15px;
+          height: 30px;
+        }  
+      }
+    }
+  }
+
+}
+
+.table-icon {
+  :hover {
+    background-color: $grey_hover;
+    border-radius: 15px;
+    height: 30px;
+  } 
 }

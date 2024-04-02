@@ -1,0 +1,38 @@
+@import './content/scss/variables';
+
+.breadcrumb-bar {
+    height: 26px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+    .go_back_button {
+        font-size: 20px;
+        height: 26px;
+        color: rgb(29, 156, 199);
+    }
+
+    .breadcrumbs { 
+        margin-left: 10px;
+        padding: 0 50px;
+        display: flex;
+        flex:1;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-end;
+        border-bottom: 1px solid black;
+        font-size: 14px;
+        font-weight: 400px;
+    
+        .breadcrumb-separator {
+          margin: 0 2px;
+        }
+    } 
+
+    .list-operations {
+        display: block;
+        flex:1;
+    }
+}
+

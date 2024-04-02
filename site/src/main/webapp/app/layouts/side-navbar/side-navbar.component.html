@@ -1,11 +1,37 @@
 <div class="sidenav">
     <div class="toggle_btn">
-        <fa-icon class="toogle_nav_icon " icon="bars" [fixedWidth]="false"></fa-icon>
+        <img class="sidenav_icon" (click)="navigate('/')" src="./content/images/ICONO_Menu.svg" alt="">
     </div>
     <ul>
-        <li><div class="list_icon"><fa-icon icon="home" [fixedWidth]="false"></fa-icon></div></li>
-        <li><div class="list_icon"><fa-icon icon="list" [fixedWidth]="true"></fa-icon></div></li>
-        <li><div class="list_icon"><fa-icon icon="gears" [fixedWidth]="true"></fa-icon></div></li>
-        <li><div class="list_icon"><fa-icon icon="users" [fixedWidth]="true"></fa-icon></div></li>
-        <li><div class="list_icon"><fa-icon icon="right-from-bracket" [fixedWidth]="true"></fa-icon></div></li>
-    </ul>
+        @if (account) {
+            <li>
+                <div class="list_icon">
+                <img class="sidenav_icon" (click)="navigate('/')" src="./content/images/ICONO_Inicio.svg" alt="">
+                </div>
+            </li>
+            <li>
+            <div class="list_icon">
+                <img class="sidenav_icon" (click)="navigate('/')" src="./content/images/ICONO_Listados.svg" alt="">
+            </div>
+            </li>
+            <li>
+                <div class="list_icon">
+                    <img class="sidenav_icon" (click)="navigate('/')" src="./content/images/ICONO_Configuracion.svg" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="list_icon">
+                    <img class="sidenav_icon" (click)="navigate('organization')" src="./content/images/ICONO_Gestion_usuarios.svg" alt="">
+                </div>
+            </li>
+            <li>
+            <div class="list_icon">
+                <img class="sidenav_icon" (click)="logout()" src="./content/images/ICONO_Salir.svg" alt="">
+            </div>
+            </li>
+        
+        } @else {
+            <li><div class="list_icon"><fa-icon (click)="login()" icon="right-from-bracket" [fixedWidth]="true"></fa-icon></div></li>
+        }
+        </ul>
+</div>

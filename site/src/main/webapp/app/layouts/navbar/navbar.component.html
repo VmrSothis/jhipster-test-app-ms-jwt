@@ -1,20 +1,24 @@
 <nav data-cy="navbar" id="navbar-top" class="navbar navbar-dark navbar-expand-md">
   <div class="container-fluid">
 
-    @if (account) {
-    <div class="user-info-block nav-left">
+    <div class="user-info-block nav-left ">
+      @if (account) {
       <div class="user-block">
+        <img class="user_icon_profile" src="./content/images/ICONO_Usuario.svg" alt="">
         <span>{{account.firstName}}</span>
       </div>
       <div class="info-block">
-        <button><fa-icon icon="bell"></fa-icon></button>
-        <button><fa-icon icon="gears"></fa-icon></button>
+        <button>
+          <img class="operation_icon" src="./content/images/ICONO_Campana.svg" alt="">
+        </button>
+        <button>
+          <img class="operation_icon" src="./content/images/ICONO_Info.svg" alt="">
+        </button>
       </div>
+      }
     </div>
-    }
-    
 
-    <div class="centered-logo d-sm-none d-lg-block d-md-block nav-left">
+    <div class="centered-logo d-lg-block d-md-block d-sm-block d-none nav-left">
       <img src="/content/images/ICONO_Logo_Sothis.svg" alt="">
     </div>
 

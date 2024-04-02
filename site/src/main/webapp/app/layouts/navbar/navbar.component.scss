@@ -71,8 +71,8 @@ nav {
 
   .user-info-block {
     display: flex;
+    height: 45px;
     flex-direction: row;
-    align-items: center;
 
     div {
       margin: 5px;
@@ -80,6 +80,7 @@ nav {
 
     .user-block {
       width: 150px;
+      display:block;
 
       .user-profile-img {
         width: 30px;
@@ -88,7 +89,8 @@ nav {
     }
 
     .info-block {
-      display: flex;
+      display: block;
+      width: 100px;
       button {
         border: 0;
         background-color: $grey_bg;

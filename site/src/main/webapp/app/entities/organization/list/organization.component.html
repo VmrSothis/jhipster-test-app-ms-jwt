@@ -1,45 +1,5 @@
-<div>
-  <h2 id="page-heading" data-cy="OrganizationHeading">
-
-    <div class="list-operations">
-      <div class="breadcrumbs">
-        <span>Inicio</span>
-        <div class="breadcrumb-separator">/</div>
-        <span>Usuarios</span>
-        <div class="breadcrumb-separator">/</div>
-        <span>Listado de Usuarios</span>
-      </div>
-      
-      <div class="d-flex justify-content-end">
-
-        <button class="btn_1">
-          <fa-icon icon="user"></fa-icon>
-        </button>
-        <button class="list_add_btn">
-          <fa-icon icon="user"></fa-icon>
-        </button>
-        <button class="list_btn">
-          <fa-icon icon="user"></fa-icon>
-        </button>
-
-        <!-- <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
-          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        </button>
-  
-        <button
-          id="jh-create-entity"
-          data-cy="entityCreateButton"
-          class="btn btn-primary jh-create-entity create-organization"
-          [routerLink]="['/organization/new']"
-        >
-          <fa-icon icon="plus"></fa-icon>
-        </button> -->
-      </div>
-    </div>
-
-    
-  </h2>
-
+<div class="organization">
+ 
   <jhi-alert-error></jhi-alert-error>
 
   <jhi-alert></jhi-alert>
@@ -96,7 +56,7 @@
         </thead>
         <tbody>
           @for (organization of organizations; track trackId) {
-            <tr data-cy="entityTable">
+            <tr data-cy="entityTable" >
             
               <td><span>{{ organization.name }}</span></td>
               <td><span>{{ organization.legalName }}</span></td>
@@ -108,12 +68,12 @@
               <td class="text-end">
                 <div class="btn-group">
 
-                  <a class="table-icon" (click)="delete(organization)" data-cy="entityDeleteButton">
-                    <fa-icon icon="times"></fa-icon>
+                  <a class="table-icon" [routerLink]="['/organization', organization.id, 'edit']" data-cy="entityEditButton">
+                    <img class="operation_icon" src="./content/images/ICONO_Editar.svg" alt="">
                   </a>
 
-                  <a class="table-icon" [routerLink]="['/organization', organization.id, 'edit']" data-cy="entityEditButton">
-                    <fa-icon icon="pencil-alt"></fa-icon>
+                  <a class="table-icon" (click)="delete(organization)" data-cy="entityDeleteButton">
+                    <img class="operation_icon" src="./content/images/ICONO_Eliminar.svg" alt="">
                   </a>
 
                 </div>

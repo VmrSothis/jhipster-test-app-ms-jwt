@@ -16,6 +16,7 @@ import { IOrganization } from '../organization.model';
 
 import { EntityArrayResponseType, OrganizationService } from '../service/organization.service';
 import { OrganizationDeleteDialogComponent } from '../delete/organization-delete-dialog.component';
+import { AlertService } from 'app/core/util/alert.service';
 
 @Component({
   standalone: true,
@@ -50,6 +51,7 @@ export class OrganizationComponent implements OnInit {
     protected organizationService: OrganizationService,
     protected activatedRoute: ActivatedRoute,
     public router: Router,
+    private alertService: AlertService,
     protected modalService: NgbModal,
   ) {}
 
@@ -92,6 +94,7 @@ export class OrganizationComponent implements OnInit {
   navigateToPage(page = this.page): void {
     this.handleNavigation(page, this.predicate, this.ascending, this.filters.filterOptions);
   }
+
 
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
     return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
@@ -167,4 +170,6 @@ export class OrganizationComponent implements OnInit {
       return [predicate + ',' + ascendingQueryParam];
     }
   }
+
+  
 }

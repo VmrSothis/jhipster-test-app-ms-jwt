@@ -1,11 +1,12 @@
 <div class="page_body sidenav_opened">
-  <div>
+  <div class="body_padding">
     <router-outlet name="navbar"></router-outlet>
     <jhi-side-navbar></jhi-side-navbar>
+    <breadcrumb-bar></breadcrumb-bar>
   </div>
   
-  <div class="container-fluid">
-    <div class="card jh-card">
+  <div class="container-fluid body_padding">
+    <div class="card inner-body">
       <router-outlet></router-outlet>
     </div>
   

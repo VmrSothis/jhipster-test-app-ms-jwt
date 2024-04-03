@@ -3,6 +3,10 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterFeatures, TitleStrategy, provideRouter, withComponentInputBinding, withDebugTracing } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { HttpClientModule } from '@angular/common/http';
+import config from 'devextreme/core/config'; 
+import { licenseKey } from '../devextreme-license'; 
+ 
+config({ licenseKey }); 
 
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,6 +23,8 @@ const routerFeatures: Array<RouterFeatures> = [withComponentInputBinding()];
 if (DEBUG_INFO_ENABLED) {
   routerFeatures.push(withDebugTracing());
 }
+
+
 
 export const appConfig: ApplicationConfig = {
   providers: [

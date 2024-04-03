@@ -58,6 +58,10 @@ Browser Upgrade Prompt
 Generic styles
 ========================================================================== */
 
+.pointerItem {
+  cursor: pointer;
+}
+
 /* Error highlight on input fields */
 .ng-valid[required],
 .ng-valid.required {
@@ -384,4 +388,14 @@ table.table {
 .sidenav_icon {
   height: 30px;
   width: 30px;
+}
+
+/* Charts  */
+
+#charts {
+
+  #verticalBarsChart {
+    width: 600px;
+    height: 400px;
+  }
 }

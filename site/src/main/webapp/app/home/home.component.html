@@ -4,6 +4,59 @@
     <div>
       @if (account !== null) {
         <h1 class="display-6"><span>Bienvenido {{account.firstName}}</span></h1>
+
+        <div id="charts">
+
+          
+          <dx-chart
+          id="verticalBarsChart"
+          title="World Population by Decade"
+          [dataSource]="populationData">
+          <dxo-legend [visible]="false"></dxo-legend>
+          <dxi-series type="bar"></dxi-series>
+          <dxo-argument-axis [tickInterval]="10">
+            <dxo-label>
+              <dxo-format type="decimal"></dxo-format>
+            </dxo-label>
+          </dxo-argument-axis>
+          </dx-chart>
+
+
+          <div id="chart-demo">
+            <dx-chart
+              title="Corporations with Highest Market Value"
+              palette="Harmony Light"
+              [dataSource]="corporationsInfo"
+            >
+              <dxi-series valueField="y2005" name="2005"></dxi-series>
+              <dxi-series valueField="y2004" name="2004"></dxi-series>
+              <dxo-common-series-settings
+                #commonSeries
+                argumentField="company"
+                [type]="types[0]"
+              ></dxo-common-series-settings>
+              <dxo-margin [bottom]="20"></dxo-margin>
+              <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
+              <dxo-export [enabled]="true"></dxo-export>
+              <dxo-legend verticalAlignment="bottom" horizontalAlignment="center">
+              </dxo-legend>
+            </dx-chart>
+            <div class="options">
+              <div class="caption">Options</div>
+              <div class="option">
+                <span>Series Type</span>
+                <dx-select-box
+                  [dataSource]="types"
+                  [(value)]="commonSeries.type"
+                  [inputAttr]="{ 'aria-label': 'Series Type' }"
+                >
+                </dx-select-box>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
       } @else {
         <h1 class="display-6"><span>Autenticación requerida</span></h1>
         <p class="lead">Debe de loguearse para acceder a la aplicación</p>

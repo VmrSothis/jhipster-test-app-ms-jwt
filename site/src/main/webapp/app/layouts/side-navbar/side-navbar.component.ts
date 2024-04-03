@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Account } from 'app/core/auth/account.model';
@@ -17,7 +18,7 @@ export class SideNavbarComponent implements OnInit {
   account: Account | null = null;
   inProduction?: boolean;
 
-  constructor(private router: Router, private loginService: LoginService, private accountService: AccountService, private profileService: ProfileService) { }
+  constructor(private location: Location, private router: Router, private loginService: LoginService, private accountService: AccountService, private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.profileService.getProfileInfo().subscribe(profileInfo => {
@@ -31,6 +32,10 @@ export class SideNavbarComponent implements OnInit {
 
   navigate(route: string): void {
     this.router.navigateByUrl(route);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   login(): void {

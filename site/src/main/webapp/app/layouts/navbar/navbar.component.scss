@@ -91,8 +91,26 @@ nav {
     .info-block {
       display: block;
       width: 100px;
+      display: flex;
+      color: $grey_txt;
+
+      .item_dropdown {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        padding: 0 10px;
+        margin: 0;
+
+        li span:first-child {
+          color: $grey_txt;
+
+
+        }
+      }
+
       button {
         border: 0;
+        color: $grey_txt;
         background-color: $grey_bg;
 
         :hover {

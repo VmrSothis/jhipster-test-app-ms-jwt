@@ -14,6 +14,31 @@
         <button>
           <img class="operation_icon" src="./content/images/ICONO_Info.svg" alt="">
         </button>
+        <ul class="item_dropdown">
+        @if (languages && languages.length > 1) {
+          <li ngbDropdown class="nav-item dropdown pointer" display="dynamic">
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
+              <span>
+                <fa-icon icon="flag"></fa-icon>
+                <span jhiTranslate="global.menu.language">Idioma</span>
+              </span>
+              <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
+                @for (language of languages; track $index) {
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      [jhiActiveMenu]="language"
+                      href="javascript:void(0);"
+                      (click)="changeLanguage(language); collapseNavbar()">
+                      {{ language | findLanguageFromKey }}
+                    </a>
+                  </li>
+                }
+              </ul>
+            </a>
+          </li>
+        }
+        </ul>
       </div>
       }
     </div>
@@ -25,7 +50,7 @@
     <div>
     </div>
 
-    <div style="display: none;" class="nav-right">
+    <div class="nav-right">
       <a
       class="navbar-toggler d-lg-none"
       href="javascript:void(0);"

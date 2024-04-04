@@ -63,3 +63,10 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 40em) {
+    .sidenav {
+        display: none;
+    }
+}

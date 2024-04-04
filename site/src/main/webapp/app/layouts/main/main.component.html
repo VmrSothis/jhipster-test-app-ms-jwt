@@ -6,8 +6,9 @@
   </div>
   
   <div class="container-fluid body_padding">
-    <div class="card inner-body">
+    <div class="card inner-body" [ngClass]="{'main': isMainPage }">
       <router-outlet></router-outlet>
+      <button mat-button (click)="openDialog()">Open dialog</button>
     </div>
   
     <jhi-footer></jhi-footer>

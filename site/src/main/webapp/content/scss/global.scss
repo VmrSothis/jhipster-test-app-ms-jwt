@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'bootstrap-variables';
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
@@ -266,10 +267,24 @@ body {
   border: none;
   border-radius: 10px;
   min-height:100%;
+  background-color: white;
+}
+
+.inner-body.main{
+  background-color: $grey_bg;
 }
 
 .page_body.sidenav_opened {
   margin-right: 60px;
+}
+
+@media only screen and (max-width: 40em) {
+  .page_body.sidenav_opened {
+    margin: 0;
+  }
+  .body_padding {
+    padding: 0 1em;
+  }
 }
 
 
@@ -358,7 +373,6 @@ table.table {
 // }
 
 .card {
-  background-color: $grey_bg!important;
 }
 
 .list-operations {
@@ -429,6 +443,7 @@ table.table {
     .graph_div {
       background-color: #fff;
       border-radius: 14px;
+      padding: 10px;
     }
 
     .ex_block_1 {
@@ -447,22 +462,12 @@ table.table {
 
 /* Charts  */
 
-#charts {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+#verticalBarsChart {
+  width: 400px;
+  height: 300px;
+}
 
-  .chart {
-    width: 600px;
-    height: 400px;
-  }
-
-  #verticalBarsChart {
-    
-  }
-
-  #splineAreaBarsChart {
-    
-  }
+#splineAreaBarsChart {
+  width: 400px;
+  height: 200px;
 }

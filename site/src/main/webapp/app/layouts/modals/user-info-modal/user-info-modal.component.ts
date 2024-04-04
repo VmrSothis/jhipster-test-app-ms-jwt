@@ -16,6 +16,7 @@ export class UserInfoModalComponent {
 
   constructor(private dialogRef: MatDialogRef<User>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.modalType = this.data.modalType ;
+    this.userSelected = this.data.userdata;
   }
   
   confirm(): void {

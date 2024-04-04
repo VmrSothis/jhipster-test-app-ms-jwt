@@ -7,19 +7,19 @@
     <div class="dialog_group">
       <div class="form-group group_input">
         <label for="exampleFormControlInput1">Nombre</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+        <input type="email" class="form-control" id="exampleFormControlInput1" [placeholder]="userSelected?.firstName">
       </div>
       <div class="form-group group_input">
         <label for="exampleFormControlInput1">Apellidos</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+        <input type="email" class="form-control" id="exampleFormControlInput1" [placeholder]="userSelected?.lastName">
       </div>
       <div class="form-group group_input">
         <label for="exampleFormControlInput1">Empresa</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+        <input type="email" class="form-control" id="exampleFormControlInput1" [placeholder]="">
       </div>
       <div class="form-group group_input">
         <label for="exampleFormControlInput1">Rol</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+        <input type="email" class="form-control" id="exampleFormControlInput1" [placeholder]="userSelected?.authorities">
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
     <div class="dialog_group">
       <div class="form-group group_input">
         <label for="exampleFormControlInput1">Nombre de usuario</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+        <input type="email" class="form-control" id="exampleFormControlInput1" [placeholder]="userSelected?.login">
       </div>
       <div class="form-group group_input">
         <label for="exampleFormControlInput1">Contraseña</label>

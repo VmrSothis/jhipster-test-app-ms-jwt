@@ -1,0 +1,25 @@
+/*       Dialogs        */
+
+.dialog_card {
+    border: 3px solid lightblue;
+    border-radius: 14px;
+    padding: 8px 12px;
+    margin:  10px 0;
+
+    .group_title {
+        font-weight: bold;
+        font-size: 20px;
+        color: lightblue;
+    }
+
+    .dialog_group {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: stretch;
+        
+        .group_input {
+            width: 50%;
+            padding: 10px;
+        }
+    }
+}

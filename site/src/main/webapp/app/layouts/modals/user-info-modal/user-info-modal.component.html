@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>@if(modalType === 'edit') { Editar Usuario } @else if(modalType === 'delete'){ Eliminar usuario }@else if(modalType === 'view'){ Ver Usuario }</h2>
+<mat-dialog-content>
+
+  @if(modalType === 'edit' || modalType === 'view') {
+  <div class="dialog_card">
+    <span class="group_title">Datos</span>
+    <div class="dialog_group">
+      <div class="form-group group_input">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      </div>
+      <div class="form-group group_input">
+        <label for="exampleFormControlInput1">Apellidos</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      </div>
+      <div class="form-group group_input">
+        <label for="exampleFormControlInput1">Empresa</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      </div>
+      <div class="form-group group_input">
+        <label for="exampleFormControlInput1">Rol</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog_card">
+    <span class="group_title">Acceso</span>
+    <div class="dialog_group">
+      <div class="form-group group_input">
+        <label for="exampleFormControlInput1">Nombre de usuario</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      </div>
+      <div class="form-group group_input">
+        <label for="exampleFormControlInput1">Contraseña</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+      </div>
+    </div>
+  </div>
+
+}@else {
+  ¿Confirma que desea eliminar el usuario seleccionado?
+}
+</mat-dialog-content>
+
+<div class="btn_group end">
+  <mat-dialog-actions>
+    <button class="round_button selected" cdkFocusInitial (click)="confirm()">Aceptar</button>
+    <button class="round_button" mat-dialog-close>Cancelar</button>
+  </mat-dialog-actions>
+</div>
+

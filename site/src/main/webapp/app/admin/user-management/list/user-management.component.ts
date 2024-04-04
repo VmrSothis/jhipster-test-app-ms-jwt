@@ -14,12 +14,15 @@ import { Account } from 'app/core/auth/account.model';
 import { UserManagementService } from '../service/user-management.service';
 import { User } from '../user-management.model';
 import UserManagementDeleteDialogComponent from '../delete/user-management-delete-dialog.component';
+import { ModalInfoComponent } from 'app/layouts/modals/modal-info/modal-info.component';
+import { MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { UserInfoModalComponent } from 'app/layouts/modals/user-info-modal/user-info-modal.component';
 
 @Component({
   standalone: true,
   selector: 'jhi-user-mgmt',
   templateUrl: './user-management.component.html',
-  imports: [RouterModule, SharedModule, SortDirective, SortByDirective, UserManagementDeleteDialogComponent, ItemCountComponent],
+  imports: [RouterModule, SharedModule, SortDirective, SortByDirective, UserManagementDeleteDialogComponent, ItemCountComponent, MatDialogModule],
 })
 export default class UserManagementComponent implements OnInit {
   currentAccount: Account | null = null;
@@ -30,8 +33,10 @@ export default class UserManagementComponent implements OnInit {
   page!: number;
   predicate!: string;
   ascending!: boolean;
+  dialogConfig = new MatDialogConfig();
 
   constructor(
+    public dialog: MatDialog,
     private userService: UserManagementService,
     private accountService: AccountService,
     private activatedRoute: ActivatedRoute,
@@ -51,6 +56,38 @@ export default class UserManagementComponent implements OnInit {
   trackIdentity(_index: number, item: User): number {
     return item.id!;
   }
+
+  viewUserDetails(): void {
+    this.dialogConfig.data = {      
+      editMode: false
+    };
+
+    const dialogRef = this.dialog.open(UserInfoModalComponent, this.dialogConfig);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.option === 'confirm') {
+        //this.deleteUser(user);
+        console.error(result.user);
+      }
+    });
+  }
+
+  openUserModal(user: User, modalType: string): void {
+    this.dialogConfig.data = {
+      modalType,      
+      userdata: user
+    };
+
+    const dialogRef: MatDialogRef<UserInfoModalComponent, any> = this.dialog.open(UserInfoModalComponent, this.dialogConfig);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.option === 'confirm') {
+        // this.deleteUser(user);
+        console.error(result.user);
+      }
+    });
+  }
+
 
   deleteUser(user: User): void {
     const modalRef = this.modalService.open(UserManagementDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
@@ -90,6 +127,14 @@ export default class UserManagementComponent implements OnInit {
     });
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalInfoComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.error(`Dialog result: ${result}`);
+    });
+  }
+
   private handleNavigation(): void {
     combineLatest([this.activatedRoute.data, this.activatedRoute.queryParamMap]).subscribe(([data, params]) => {
       const page = params.get('page');
@@ -113,4 +158,5 @@ export default class UserManagementComponent implements OnInit {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.users = users;
   }
+
 }

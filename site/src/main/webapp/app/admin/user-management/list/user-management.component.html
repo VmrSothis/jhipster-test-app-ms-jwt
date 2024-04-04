@@ -1,15 +1,24 @@
 <div>
   <h2>
-    <span id="user-management-page-heading" jhiTranslate="userManagement.home.title" data-cy="userManagementPageHeading">Usuarios</span>
+    <span id="user-management-page-heading" data-cy="userManagementPageHeading"></span>
 
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+    <div id="options_header" class="">
+      <div class="option_rounded colored">
+        <fa-icon class="icon" icon="search"></fa-icon>
+        <span class="label">Buscar</span>
+      </div>
+      <div class="option_rounded">
+        <fa-icon class="icon" icon="plus" (click)="openDialog()"></fa-icon>
+      </div>
+
+      <!-- <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="userManagement.home.refreshListLabel">Refrescar lista</span>
       </button>
       <button class="btn btn-primary jh-create-entity" [routerLink]="['./new']">
         <fa-icon icon="plus"></fa-icon> <span jhiTranslate="userManagement.home.createLabel">Crear un nuevo usuario</span>
-      </button>
+      </button> -->
+
     </div>
   </h2>
 
@@ -80,24 +89,25 @@
                 <td>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</td>
                 <td class="text-end">
                   <div class="btn-group">
-                    <button type="submit" [routerLink]="['./', user.login, 'view']" class="btn btn-info btn-sm">
+                    <button type="button" (click)="openUserModal(user, 'view')" class="btn btn-info btn-sm">
                       <fa-icon icon="eye"></fa-icon>
                       <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
                     </button>
+                    <!--[routerLink]="['./', user.login, 'view']"-->
 
                     <button
-                      type="submit"
-                      [routerLink]="['./', user.login, 'edit']"
-                      queryParamsHandling="merge"
+                      type="button"
+                      (click)="openUserModal(user, 'edit')"
                       class="btn btn-primary btn-sm"
                     >
+                    <!--[routerLink]="['./', user.login, 'edit']"-->
                       <fa-icon icon="pencil-alt"></fa-icon>
                       <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
                     </button>
 
                     <button
                       type="button"
-                      (click)="deleteUser(user)"
+                      (click)="openUserModal(user, 'delete')"
                       class="btn btn-danger btn-sm"
                       [disabled]="!currentAccount || currentAccount.login === user.login"
                     >

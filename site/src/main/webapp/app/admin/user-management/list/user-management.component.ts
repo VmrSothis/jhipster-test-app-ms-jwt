@@ -22,7 +22,7 @@ import { UserInfoModalComponent } from 'app/layouts/modals/user-info-modal/user-
   standalone: true,
   selector: 'jhi-user-mgmt',
   templateUrl: './user-management.component.html',
-  imports: [RouterModule, SharedModule, SortDirective, SortByDirective, UserManagementDeleteDialogComponent, ItemCountComponent, MatDialogModule],
+  imports: [RouterModule, SharedModule, MatDialogModule, SortDirective, SortByDirective, UserManagementDeleteDialogComponent, ItemCountComponent ],
 })
 export default class UserManagementComponent implements OnInit {
   currentAccount: Account | null = null;

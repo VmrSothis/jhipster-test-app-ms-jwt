@@ -15,6 +15,7 @@ export class UserInfoModalComponent {
   modalType: string = 'view';
 
   constructor(private dialogRef: MatDialogRef<User>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    // se obtienen los valores necesarios en el template desde el objeto data que se recibe
     this.modalType = this.data.modalType ;
     this.userSelected = this.data.userdata;
   }
@@ -22,5 +23,4 @@ export class UserInfoModalComponent {
   confirm(): void {
     this.dialogRef.close({ option: 'confirm', user: this.data.userdata});
   }
-
 }

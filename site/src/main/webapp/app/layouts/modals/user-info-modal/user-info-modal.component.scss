@@ -1,3 +1,5 @@
+@import './content/scss/variables';
+
 /*       Dialogs        */
 
 .dialog_card {
@@ -23,6 +25,7 @@
 
             label {
                 font-weight: 400!important;
+                color: $green_hover;
             }
         }
     }

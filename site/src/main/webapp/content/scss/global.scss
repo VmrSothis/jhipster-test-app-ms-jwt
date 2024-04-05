@@ -120,6 +120,12 @@ Generic styles
   cursor: pointer;
 }
 
+button {
+  &.btn:disabled {
+    border-color: transparent;
+  }
+}
+
 /* ==========================================================================
 Custom alerts for notification
 ========================================================================== */
@@ -325,6 +331,7 @@ table.table {
     td {
       background-color: $green_list_item!important;
 
+
       span {
         width: 110px;
         overflow: hidden;
@@ -336,8 +343,9 @@ table.table {
         display: flex;
       }
 
-      :first-of-type {
+      &:first-child {
         margin-left: 20px;
+        padding-left: 20px;
       }
 
       .table-icon {
@@ -377,12 +385,13 @@ table.table {
   flex: 1;
   flex-direction: row;
   border-bottom: 1px solid black;
-
   button {
     border: 0;
     background-color: transparent;
   }
 }
+
+
 
 .operation_icon {
   height: 20px;
@@ -545,5 +554,11 @@ table.table {
 
   &:hover {
     background-color: darken($green_list_item, 20%);
+  }
+}
+
+.list-item-actions {
+  .btn_group .list-item-actions {
+    
   }
 }

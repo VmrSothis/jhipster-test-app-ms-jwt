@@ -6,19 +6,22 @@ import { Account } from 'app/core/auth/account.model';
 import { AccountService } from 'app/core/auth/account.service';
 import { LoginService } from 'app/login/login.service';
 import { ProfileService } from '../profiles/profile.service';
+import { MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { ModalInfoComponent } from '../modals/modal-info/modal-info.component';
 
 @Component({
   selector: 'jhi-side-navbar',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, MatDialogModule,],
   templateUrl: './side-navbar.component.html',
   styleUrl: './side-navbar.component.scss'
 })
 export class SideNavbarComponent implements OnInit {
   account: Account | null = null;
   inProduction?: boolean;
+  dialogConfig = new MatDialogConfig();
 
-  constructor(private location: Location, private router: Router, private loginService: LoginService, private accountService: AccountService, private profileService: ProfileService) { }
+  constructor(public dialog: MatDialog, private location: Location, private router: Router, private loginService: LoginService, private accountService: AccountService, private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.profileService.getProfileInfo().subscribe(profileInfo => {
@@ -42,9 +45,23 @@ export class SideNavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  confirmLogout(): void {
+    // se pasan los strings a utilizar en el modal genérico para mensajes de si / no
+    this.dialogConfig.data = {
+      dialogTile: 'Logout',
+      modalMessage: '¿Seguro que quieres salir de la sesión?'
+    };
+    const dialogRef: MatDialogRef<ModalInfoComponent, any> = this.dialog.open(ModalInfoComponent, this.dialogConfig);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result?.confirmed) {
+        this.logout();
+      }
+    });
+  }
+
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['']);
   }
-
 }

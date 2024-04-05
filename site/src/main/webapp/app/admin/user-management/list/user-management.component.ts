@@ -72,7 +72,7 @@ export default class UserManagementComponent implements OnInit {
     });
   }
 
-  openUserModal(user: User, modalType: string): void {
+  openUserModal(user: User | null, modalType: string): void {
     this.dialogConfig.data = {
       modalType,      
       userdata: user
@@ -82,12 +82,11 @@ export default class UserManagementComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe(result => {
       if(result.option === 'confirm') {
-        // this.deleteUser(user);
-        console.error(result.user);
+        // aquí dentro se gestiona la siguiente accion en caso de pulsar 'OK' en la modal
+        // this.deleteUser(user); //comentado hasta tener claro cómo borrar el user
       }
     });
   }
-
 
   deleteUser(user: User): void {
     const modalRef = this.modalService.open(UserManagementDeleteDialogComponent, { size: 'lg', backdrop: 'static' });

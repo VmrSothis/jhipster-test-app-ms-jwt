@@ -48,14 +48,18 @@ nav {
 
 #navbar-top {
     display: flex;
+    justify-content: center;
     align-items: center;
 
-    .nav-left, .nav-right {
-      flex: 1;
-    }
+  .nav-left, .nav-right {
+    flex: 1;
+  }
 
   .centered-logo {
     display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
     justify-content: center;
     height: 50px;
   

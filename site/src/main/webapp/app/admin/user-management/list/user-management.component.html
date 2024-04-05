@@ -8,7 +8,7 @@
         <span class="label">Buscar</span>
       </div>
       <div class="option_rounded">
-        <fa-icon class="icon" icon="plus" (click)="openDialog()"></fa-icon>
+        <fa-icon class="icon" icon="plus" (click)="openUserModal(null, 'new')"></fa-icon>
       </div>
 
       <!-- <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
@@ -40,13 +40,13 @@
             </th>
             <th scope="col"><span jhiTranslate="userManagement.profiles">Perfiles</span></th>
             <th scope="col" jhiSortBy="createdDate">
-              <span jhiTranslate="userManagement.createdDate">Fecha de creación</span> <fa-icon icon="sort"></fa-icon>
+              <span jhiTranslate="userManagement.createdDate">Creación</span> <fa-icon icon="sort"></fa-icon>
             </th>
             <th scope="col" jhiSortBy="lastModifiedBy">
               <span jhiTranslate="userManagement.lastModifiedBy">Modificado por</span> <fa-icon icon="sort"></fa-icon>
             </th>
             <th scope="col" jhiSortBy="lastModifiedDate">
-              <span jhiTranslate="userManagement.lastModifiedDate">Fecha de modificación</span> <fa-icon icon="sort"></fa-icon>
+              <span jhiTranslate="userManagement.lastModifiedDate">Modificación</span> <fa-icon icon="sort"></fa-icon>
             </th>
             <th scope="col"></th>
           </tr>
@@ -88,10 +88,9 @@
                 <td>{{ user.lastModifiedBy }}</td>
                 <td>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</td>
                 <td class="text-end">
-                  <div class="btn-group">
+                  <div class="btn-group list-item-actions">
                     <button type="button" (click)="openUserModal(user, 'view')" class="btn btn-sm">
                       <fa-icon icon="eye"></fa-icon>
-                      
                     </button>
                     <!--[routerLink]="['./', user.login, 'view']"-->
 
@@ -102,7 +101,6 @@
                     >
                     <!--[routerLink]="['./', user.login, 'edit']"-->
                       <fa-icon icon="pencil-alt"></fa-icon>
-                      
                     </button>
 
                     <button

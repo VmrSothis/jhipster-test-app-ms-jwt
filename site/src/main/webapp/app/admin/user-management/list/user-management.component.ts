@@ -57,21 +57,6 @@ export default class UserManagementComponent implements OnInit {
     return item.id!;
   }
 
-  viewUserDetails(): void {
-    this.dialogConfig.data = {      
-      editMode: false
-    };
-
-    const dialogRef = this.dialog.open(UserInfoModalComponent, this.dialogConfig);
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.option === 'confirm') {
-        //this.deleteUser(user);
-        console.error(result.user);
-      }
-    });
-  }
-
   openUserModal(user: User | null, modalType: string): void {
     this.dialogConfig.data = {
       modalType,      
@@ -79,11 +64,13 @@ export default class UserManagementComponent implements OnInit {
     };
 
     const dialogRef: MatDialogRef<UserInfoModalComponent, any> = this.dialog.open(UserInfoModalComponent, this.dialogConfig);
-    
+  
     dialogRef.afterClosed().subscribe(result => {
-      if(result.option === 'confirm') {
+      console.error(result);
+      this.loadAll();
+      if (result.operation === 'delete') {
         // aquí dentro se gestiona la siguiente accion en caso de pulsar 'OK' en la modal
-        // this.deleteUser(user); //comentado hasta tener claro cómo borrar el user
+        // this.deleteUser(user); //comentado hasta tener claro cómo borrar el user 
       }
     });
   }

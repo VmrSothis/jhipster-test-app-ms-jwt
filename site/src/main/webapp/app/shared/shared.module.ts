@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -24,5 +24,6 @@ import { AlertErrorComponent } from './alert/alert-error.component';
     FindLanguageFromKeyPipe,
     TranslateDirective,
   ],
+  providers: [ { provide: LOCALE_ID, useValue: 'es-Ar' } ],
 })
 export default class SharedModule {}

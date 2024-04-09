@@ -33,7 +33,8 @@
             </div>
           </div>
           <div class="dashb_col2 column">
-            <h4 style="font-weight: bold;">Notificaciones</h4>
+            <!--Se ha añadido traducción-->
+            <h4 style="font-weight: bold;"><span jhiTranslate="home.notifications">Notificaciones</span></h4>
             
             <div class="graph_div">
               <dx-chart
@@ -116,8 +117,10 @@
         </div> -->
         
       } @else {
-        <h1 class="display-6"><span>Autenticación requerida</span></h1>
-        <p class="lead">Debe de loguearse para acceder a la aplicación</p>
+        <!-- Se ha añadido traducción-->
+        <h1 class="display-6"><span jhiTranslate="home.authenticatedReq">Autenticación requerida</span></h1>
+        <!-- Se ha añadido traducción-->
+        <p class="lead"><span span jhiTranslate="home.needLoging">Debe de loguearse para acceder a la aplicación</span></p>
 
         <div class="alert alert-warning">
           <span jhiTranslate="global.messages.info.authenticated.prefix">Si desea </span>

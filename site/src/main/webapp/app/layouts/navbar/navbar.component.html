@@ -1,6 +1,33 @@
 <nav data-cy="navbar" id="navbar-top" class="navbar navbar-dark navbar-expand-md">
   <div class="container-fluid">
-
+    <!--Se ha cambiado de lugar y es visible independientemente de estar logueado o no-->
+    <div class="language">
+      <ul class="item_dropdown">
+      @if (languages && languages.length > 1) {
+        <li ngbDropdown class="nav-item dropdown pointer" display="dynamic">
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
+            <span>
+              <fa-icon icon="flag"></fa-icon>
+              <span jhiTranslate="global.menu.language">Idioma</span>
+            </span>
+            <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
+              @for (language of languages; track $index) {
+                <li>
+                  <a
+                    class="dropdown-item"
+                    [jhiActiveMenu]="language"
+                    href="javascript:void(0);"
+                    (click)="changeLanguage(language); collapseNavbar()">
+                    {{ language | findLanguageFromKey }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </a>
+        </li>
+      }
+      </ul>
+    </div>
     <div class="user-info-block nav-left ">
       @if (account) {
       <div class="user-block">
@@ -14,35 +41,9 @@
         <button>
           <img class="operation_icon" src="./content/images/ICONO_Info.svg" alt="">
         </button>
-        <ul class="item_dropdown">
-        @if (languages && languages.length > 1) {
-          <li ngbDropdown class="nav-item dropdown pointer" display="dynamic">
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
-              <span>
-                <fa-icon icon="flag"></fa-icon>
-                <span jhiTranslate="global.menu.language">Idioma</span>
-              </span>
-              <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
-                @for (language of languages; track $index) {
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      [jhiActiveMenu]="language"
-                      href="javascript:void(0);"
-                      (click)="changeLanguage(language); collapseNavbar()">
-                      {{ language | findLanguageFromKey }}
-                    </a>
-                  </li>
-                }
-              </ul>
-            </a>
-          </li>
-        }
-        </ul>
       </div>
       }
     </div>
-
     <div class="d-lg-block d-md-block d-none nav-left">
       <div class="centered-logo">
         <img src="/content/images/ICONO_Logo_Sothis.svg" alt="">

@@ -1,6 +1,10 @@
 <div class="sidenav">
     <div class="toggle_btn">
-        <img class="sidenav_icon" (click)="navigate('/')" src="./content/images/ICONO_Menu.svg" alt="">
+        @if (account) {
+            <img class="sidenav_icon" (click)="navigate('/')" src="./content/images/ICONO_Menu.svg" alt="">
+        } @else {
+            <img class="sidenav_icon" (click)="login()" src="./content/images/ICONO_Menu.svg" alt="">
+        }
     </div>
     <ul>
         @if (account) {

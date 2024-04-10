@@ -1,93 +1,102 @@
-<h2 mat-dialog-title>@if(modalType === 'edit') { Editar Usuario } @else if(modalType === 'new'){ Nuevo Usuario } @else if(modalType === 'delete'){ Eliminar usuario }@else if(modalType === 'view'){ Ver Usuario }</h2>
+<h2 mat-dialog-title>
+  @if(modalType === 'edit') {
+    <label jhiTranslate="userManagement.editUser">Editar Usuario</label>
+  }@else if(modalType === 'new'){
+    <label jhiTranslate="userManagement.newUser">Nuevo Usuario</label>
+  }@else if(modalType === 'delete'){
+    <label jhiTranslate="userManagement.deleteUser">Eliminar Usuario</label>
+  }@else if(modalType === 'view'){
+    <label jhiTranslate="userManagement.viewUser">Ver Usuario</label>
+  }
+</h2>
 <mat-dialog-content>
   <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-  @if(modalType === 'edit' || modalType === 'view' || modalType === 'new') {
-  <div class="dialog_card">
-    <span class="group_title">Datos</span>
+    @if(modalType === 'edit' || modalType === 'view' || modalType === 'new') {
+    <div class="dialog_card">
+      <span class="group_title" jhiTranslate="userManagement.data">Datos</span>
 
-    <div class="dialog_group">
-      <div class="form-group group_input">
-        <label jhiTranslate="userManagement.firstName">Nombre</label>
-        @if (modalType === 'edit' || modalType === 'new') {
+      <div class="dialog_group">
+        <div class="form-group group_input">
+          <label jhiTranslate="userManagement.firstName">Nombre</label>
+          @if (modalType === 'edit' || modalType === 'new') {
           <input type="text" class="form-control" name="firstName" formControlName="firstName" />
-        }@else {
+          }@else {
           <br>
           <span>{{editForm.get('firstName')?.value}}</span>
-        }
-      </div>
-      <div class="form-group group_input">
-        <label jhiTranslate="userManagement.lastName">Apellidos</label>
-        @if (modalType === 'edit' || modalType === 'new') {
+          }
+        </div>
+        <div class="form-group group_input">
+          <label jhiTranslate="userManagement.lastName">Apellidos</label>
+          @if (modalType === 'edit' || modalType === 'new') {
           <input type="text" class="form-control" name="lastName" formControlName="lastName" />
-        }@else {
+          }@else {
           <br>
           <span>{{editForm.get('lastName')?.value}}</span>
-        }
-      </div>
-      <div class="form-group group_input">
-        <label jhiTranslate="userManagement.langKey">Idioma</label>
-        @if (modalType === 'edit' || modalType === 'new') {
+          }
+        </div>
+        <div class="form-group group_input">
+          <label jhiTranslate="userManagement.langKey">Idioma</label>
+          @if (modalType === 'edit' || modalType === 'new') {
           <select class="form-control" id="langKey" name="langKey" formControlName="langKey">
             @for (language of languages; track $index) {
-              <option [value]="language">{{ language | findLanguageFromKey }}</option>
+            <option [value]="language">{{ language | findLanguageFromKey }}</option>
             }
           </select>
-        }@else {
+          }@else {
           <br>
           <span>{{userSelected?.lastName}}</span>
-        }
-      </div>
-      <div class="form-group group_input">
-        <label>Rol</label>
-        @if (modalType === 'edit' || modalType === 'new') {
-        <select class="form-control" multiple name="authority" formControlName="authorities">
-          @for (authority of authorities; track $index) {
-            <option [value]="authority">{{ authority }}</option>
           }
-        </select>
-        }@else {
+        </div>
+        <div class="form-group group_input">
+          <label>Rol</label>
+          @if (modalType === 'edit' || modalType === 'new') {
+          <select class="form-control" multiple name="authority" formControlName="authorities">
+            @for (authority of authorities; track $index) {
+            <option [value]="authority">{{ authority }}</option>
+            }
+          </select>
+          }@else {
           <br>
           <span>{{userSelected?.authorities}}</span>
-        }
-      </div>
-   
-    </div>
-  </div>
+          }
+        </div>
 
-  <div class="dialog_card">
-    <span class="group_title">Acceso</span>
-    <div class="dialog_group">
-      <div class="form-group group_input">
-        <label jhiTranslate="userManagement.login">Login</label>
-        @if (modalType === 'edit' || modalType === 'new') {
-        <input type="text" class="form-control" name="login" formControlName="login" />
-        }@else {
+      </div>
+    </div>
+
+    <div class="dialog_card">
+      <span class="group_title" jhiTranslate="userManagement.acces">Acceso</span>
+      <div class="dialog_group">
+        <div class="form-group group_input">
+          <label jhiTranslate="userManagement.login">Login</label>
+          @if (modalType === 'edit' || modalType === 'new') {
+          <input type="text" class="form-control" name="login" formControlName="login" />
+          }@else {
           <br>
           <span>{{editForm.get('login')?.value}}</span>
-        }
-      </div>
-      <div class="form-group group_input">
-        <label jhiTranslate="userManagement.email">Email</label>
-        @if (modalType === 'edit' || modalType === 'new') {
+          }
+        </div>
+        <div class="form-group group_input">
+          <label jhiTranslate="userManagement.email">Email</label>
+          @if (modalType === 'edit' || modalType === 'new') {
           <input type="email" class="form-control" name="email" formControlName="email" />
-        }@else {
+          }@else {
           <br>
           <span>{{editForm.get('email')?.value}}</span>
-        }
+          }
+        </div>
       </div>
     </div>
-  </div>
 
-}@else {
-  ¿Confirma que desea eliminar el usuario seleccionado?
-}
-</form>
+    }@else {
+      <label jhiTranslate="userManagement.delete.question">¿Seguro que quieres eliminar el usuario seleccionado?</label>
+    }
+  </form>
 </mat-dialog-content>
 
 <div class="btn_group end">
   <mat-dialog-actions>
-    <button class="round_button selected" cdkFocusInitial (click)="save()">Aceptar</button>
-    <button class="round_button" mat-dialog-close>Cancelar</button>
+    <button class="round_button selected" cdkFocusInitial (click)="save()" jhiTranslate="userManagement.accept">Aceptar</button>
+    <button class="round_button" mat-dialog-close jhiTranslate="userManagement.cancel">Cancelar</button>
   </mat-dialog-actions>
 </div>
-

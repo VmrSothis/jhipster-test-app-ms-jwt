@@ -8,20 +8,29 @@ import { LoginService } from 'app/login/login.service';
 import { ProfileService } from '../profiles/profile.service';
 import { MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { ModalInfoComponent } from '../modals/modal-info/modal-info.component';
+import { TranslateService } from '@ngx-translate/core'; // Se importa el servicio de traducción de ngx-translate
 
 @Component({
   selector: 'jhi-side-navbar',
   standalone: true,
-  imports: [FontAwesomeModule, MatDialogModule,],
+  imports: [FontAwesomeModule, MatDialogModule],
   templateUrl: './side-navbar.component.html',
-  styleUrl: './side-navbar.component.scss'
+  styleUrls: ['./side-navbar.component.scss']
 })
 export class SideNavbarComponent implements OnInit {
   account: Account | null = null;
   inProduction?: boolean;
   dialogConfig = new MatDialogConfig();
 
-  constructor(public dialog: MatDialog, private location: Location, private router: Router, private loginService: LoginService, private accountService: AccountService, private profileService: ProfileService) { }
+  constructor(
+    public dialog: MatDialog,
+    private location: Location,
+    private router: Router,
+    private loginService: LoginService,
+    private accountService: AccountService,
+    private profileService: ProfileService,
+    private translateService: TranslateService // Se añade el servicio de traducción de ngx-translate
+  ) { }
 
   ngOnInit(): void {
     this.profileService.getProfileInfo().subscribe(profileInfo => {
@@ -46,17 +55,20 @@ export class SideNavbarComponent implements OnInit {
   }
 
   confirmLogout(): void {
-    // se pasan los strings a utilizar en el modal genérico para mensajes de si / no
-    this.dialogConfig.data = {
-      dialogTile: 'Logout',
-      modalMessage: '¿Seguro que quieres salir de la sesión?'
-    };
-    const dialogRef: MatDialogRef<ModalInfoComponent, any> = this.dialog.open(ModalInfoComponent, this.dialogConfig);
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if(result?.confirmed) {
-        this.logout();
-      }
+    //Se han añadido traducciones
+    this.translateService.get(['Logout', 'questionLogOut']).subscribe(translations => {
+      this.dialogConfig.data = {
+        dialogTile: translations['Logout'],
+        modalMessage: translations['questionLogOut']
+      };
+
+      const dialogRef: MatDialogRef<ModalInfoComponent, any> = this.dialog.open(ModalInfoComponent, this.dialogConfig);
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result?.confirmed) {
+          this.logout();
+        }
+      });
     });
   }
 

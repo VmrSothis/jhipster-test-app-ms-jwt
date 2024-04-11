@@ -70,8 +70,9 @@ export default class UserManagementComponent implements OnInit {
       this.loadAll();
       if (result.operation === 'delete') {
         // aquí dentro se gestiona la siguiente accion en caso de pulsar 'OK' en la modal
-        if(user)
-        this.deleteUser(user); //comentado hasta tener claro cómo borrar el user 
+        if(user) {
+          this.deleteUser(user);
+        }
       }
     });
   }

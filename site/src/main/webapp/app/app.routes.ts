@@ -6,7 +6,6 @@ import { errorRoute } from './layouts/error/error.route';
 
 import HomeComponent from './home/home.component';
 import NavbarComponent from './layouts/navbar/navbar.component';
-import { SideNavbarComponent } from './layouts/side-navbar/side-navbar.component';
 import LoginComponent from './login/login.component';
 
 const routes: Routes = [

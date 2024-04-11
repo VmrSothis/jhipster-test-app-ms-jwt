@@ -31,7 +31,7 @@
         </div>
       </div>
       
-      <table class="table " aria-describedby="page-heading">
+      <table class="table" aria-describedby="page-heading">
         @if (organizations && organizations.length > 0) {
         <thead>
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">

@@ -1,16 +1,16 @@
-<div class="page_body sidenav_opened">
-  <div class="body_padding">
+<div class="page_body" [ngClass]="{'sidenav_opened': !isMobile}" >
+  
+  <div>
     <router-outlet name="navbar"></router-outlet>
     <jhi-side-navbar></jhi-side-navbar>
     <breadcrumb-bar></breadcrumb-bar>
   </div>
   
-  <div class="container-fluid body_padding">
-    <div class="card inner-body" [ngClass]="{'main': isMainPage }">
+  <div class="container-fluid router-body" [ngClass]="{'main': isMainPage }">
+    <div class="card jh-card" >
       <router-outlet></router-outlet>
     </div>
   
     <jhi-footer></jhi-footer>
   </div>
 </div>
-

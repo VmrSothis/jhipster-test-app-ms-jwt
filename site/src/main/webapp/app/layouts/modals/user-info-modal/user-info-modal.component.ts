@@ -62,10 +62,10 @@ export class UserInfoModalComponent {
     this.userService.authorities().subscribe(authorities => (this.authorities = authorities));
   }
 
-  save(): void {
+  save(modalType: String): void {
     this.isSaving = true;
     const user = this.editForm.getRawValue();
-    if (user.login) {
+    if (modalType ==="edit") {
       this.userService.update(user).subscribe({
         next: () => {
           this.onSaveSuccess();
@@ -75,7 +75,7 @@ export class UserInfoModalComponent {
           this.dialogRef.close({ confirmed: false });
         }
       });
-    } else {
+    } else if(modalType ==="new") {
       this.userService.create(user).subscribe({
         next: () => this.onSaveSuccess(),
         error: (err) => this.onSaveError(err),
@@ -83,7 +83,16 @@ export class UserInfoModalComponent {
           this.dialogRef.close({ confirmed: false });
         }
       });
+    } else if(modalType ==="delete") {
+      this.userService.delete(user).subscribe({
+        next: () => this.onSaveSuccess(),
+        error: (err) => this.onSaveError(err),
+        complete: () => {
+          this.dialogRef.close({ confirmed: false });
+        }
+      });
     }
+
   }
 
   private onSaveSuccess(): void {

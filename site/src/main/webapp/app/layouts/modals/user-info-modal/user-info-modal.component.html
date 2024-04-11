@@ -1,16 +1,16 @@
 <h2 mat-dialog-title>
   @if(modalType === 'edit') {
-    <label jhiTranslate="userManagement.editUser">Editar Usuario</label>
+  <label jhiTranslate="userManagement.editUser">Editar Usuario</label>
   }@else if(modalType === 'new'){
-    <label jhiTranslate="userManagement.newUser">Nuevo Usuario</label>
+  <label jhiTranslate="userManagement.newUser">Nuevo Usuario</label>
   }@else if(modalType === 'delete'){
-    <label jhiTranslate="userManagement.deleteUser">Eliminar Usuario</label>
+  <label jhiTranslate="userManagement.deleteUser">Eliminar Usuario</label>
   }@else if(modalType === 'view'){
-    <label jhiTranslate="userManagement.viewUser">Ver Usuario</label>
+  <label jhiTranslate="userManagement.viewUser">Ver Usuario</label>
   }
 </h2>
 <mat-dialog-content>
-  <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+  <form name="editForm" role="form" novalidate (ngSubmit)="save(modalType)" [formGroup]="editForm">
     @if(modalType === 'edit' || modalType === 'view' || modalType === 'new') {
     <div class="dialog_card">
       <span class="group_title" jhiTranslate="userManagement.data">Datos</span>
@@ -89,14 +89,24 @@
     </div>
 
     }@else {
-      <label jhiTranslate="userManagement.delete.question">¿Seguro que quieres eliminar el usuario seleccionado?</label>
+    <label jhiTranslate="userManagement.delete.question">¿Seguro que quieres eliminar el usuario seleccionado?</label>
     }
   </form>
 </mat-dialog-content>
 
 <div class="btn_group end">
   <mat-dialog-actions>
-    <button class="round_button selected" cdkFocusInitial (click)="save()" jhiTranslate="userManagement.accept">Aceptar</button>
+    <!--Botón Aceptar. Todos los modales menos View tienen dos botones Aceptar y Cancelar-->
+    @if(modalType === 'edit' || modalType === 'new' || modalType === 'delete') {
+    <button class="round_button selected" cdkFocusInitial (click)="save(modalType)"
+      jhiTranslate="userManagement.accept">Aceptar</button>
+    }
+    <!--Botón Cancelar. El modal View solo tiene un botón. Como no tiene que hacer nada se usa el boton Cancelar-->
+    @if(modalType === 'view'){
+    <button class="round_button" mat-dialog-close jhiTranslate="userManagement.accept">Aceptar</button>
+    }@else{
     <button class="round_button" mat-dialog-close jhiTranslate="userManagement.cancel">Cancelar</button>
+    }
+
   </mat-dialog-actions>
 </div>

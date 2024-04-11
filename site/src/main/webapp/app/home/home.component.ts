@@ -7,6 +7,7 @@ import SharedModule from 'app/shared/shared.module';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
+import LoginComponent from 'app/login/login.component';
 
 interface СorporationInfo {
   company: string;
@@ -19,7 +20,7 @@ interface СorporationInfo {
   selector: 'jhi-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [SharedModule, RouterModule, DxChartModule, DxSelectBoxModule],
+  imports: [SharedModule, RouterModule, DxChartModule, DxSelectBoxModule, LoginComponent],
 })
 export default class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;

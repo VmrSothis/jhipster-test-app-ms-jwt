@@ -1,5 +1,5 @@
 @if (user) {
-  <form name="deleteForm" (ngSubmit)="confirmDelete(user.login!)">
+  <form name="deleteForm" (ngSubmit)="confirmDelete(user)">
     <div class="modal-header">
       <h4 class="modal-title" jhiTranslate="entity.delete.title">Confirmar operación de borrado</h4>
 

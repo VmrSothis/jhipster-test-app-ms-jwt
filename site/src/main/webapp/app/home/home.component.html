@@ -33,7 +33,8 @@
             </div>
           </div>
           <div class="dashb_col2 column">
-            <h4 style="font-weight: bold;">Notificaciones</h4>
+            <!--Se ha añadido traducción-->
+            <h4 style="font-weight: bold;"><span jhiTranslate="home.notifications">Notificaciones</span></h4>
             
             <div class="graph_div">
               <dx-chart
@@ -116,22 +117,8 @@
         </div> -->
         
       } @else {
-        <h1 class="display-6"><span>Autenticación requerida</span></h1>
-        <p class="lead">Debe de loguearse para acceder a la aplicación</p>
-
-        <div class="alert alert-warning">
-          <span jhiTranslate="global.messages.info.authenticated.prefix">Si desea </span>
-          <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">iniciar sesión</a
-          ><span jhiTranslate="global.messages.info.authenticated.suffix"
-            >, puede intentar con las cuentas predeterminadas:<br />- Administrador (usuario=&quot;admin&quot; y
-            contraseña=&quot;admin&quot;) <br />- Usuario (usuario=&quot;user&quot; y contraseña=&quot;user&quot;).</span
-          >
-        </div>
-
-        <div class="alert alert-warning">
-          <span jhiTranslate="global.messages.info.register.noaccount">¿Aún no tienes una cuenta?</span>&nbsp;
-          <a class="alert-link" routerLink="/account/register" jhiTranslate="global.messages.info.register.link">Crea una cuenta</a>
-        </div>
+        <!--Se redirecciona directamente al componente login-->
+        <jhi-login></jhi-login>
       }
     </div>
   

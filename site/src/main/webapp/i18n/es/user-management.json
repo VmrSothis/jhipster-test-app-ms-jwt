@@ -10,7 +10,7 @@
     "updated": "Se actualizó el usuario con identificador {{ param }}",
     "deleted": "Se borró el usuario con identificador {{ param }}",
     "delete": {
-      "question": "¿Seguro que quieres eliminar el usuario {{ login }}?"
+      "question": "¿Seguro que quieres eliminar el usuario seleccionado?"
     },
     "detail": {
       "title": "Usuario"
@@ -26,6 +26,14 @@
     "createdBy": "Creado por",
     "createdDate": "Fecha de creación",
     "lastModifiedBy": "Modificado por",
-    "lastModifiedDate": "Fecha de modificación"
+    "lastModifiedDate": "Fecha de modificación",
+    "editUser": "Editar Usuario",
+    "deleteUser": "Borrar Usuario",
+    "newUser": "Nuevo Usuario",
+    "viewUser": "Ver Usuario",
+    "data": "Datos",
+    "acces": "Acceso",
+    "accept": "Aceptar",
+    "cancel": "Cancelar"
   }
 }

@@ -14,6 +14,9 @@
       "follow": "follow @jhipster on Twitter"
     },
     "like": "If you like JHipster, don't forget to give us a star on",
-    "github": "GitHub"
+    "github": "GitHub",
+    "authenticatedReq": "Authentication required",
+    "needLoging":"You must log in to access the application",
+    "notifications":"Notifications"
   }
 }

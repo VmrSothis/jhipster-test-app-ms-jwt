@@ -73,6 +73,26 @@ nav {
 
   }
 
+  .language{
+    display: flex;
+    height: 45px;
+    flex-direction: row; 
+    width: 150px;
+    div {
+      margin: 5px;
+    }
+    .item_dropdown {
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      padding: 0 10px;
+      margin: 0;
+      li span:first-child {
+        color: $grey_txt;
+      }
+    }
+  }
+
   .user-info-block {
     display: flex;
     height: 45px;
@@ -97,20 +117,6 @@ nav {
       width: 100px;
       display: flex;
       color: $grey_txt;
-
-      .item_dropdown {
-        display: flex;
-        align-items: center;
-        list-style-type: none;
-        padding: 0 10px;
-        margin: 0;
-
-        li span:first-child {
-          color: $grey_txt;
-
-
-        }
-      }
 
       button {
         border: 0;

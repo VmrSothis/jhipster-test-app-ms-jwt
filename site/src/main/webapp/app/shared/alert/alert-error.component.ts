@@ -60,13 +60,14 @@ export class AlertErrorComponent implements OnDestroy {
               }
               // convert 'something[14].other[4].id' to 'something[].other[].id' so translations can be written to it
               const convertedField: string = fieldError.field.replace(/\[\d*\]/g, '[]');
-              const fieldName: string = translateService.instant(`jhipsterSiteApp.${fieldError.objectName as string}.${convertedField}`);
+              const keyName: string = 'site'; // fieldError.objectName as string; Se está utilizando la key site, en el json de translations Site
+              const fieldName: string = translateService.instant(`jhipsterSiteApp.${keyName}.${convertedField}`);
               this.addErrorAlert(`Error on field "${fieldName}"`, `error.${fieldError.message as string}`, { fieldName });
             }
-          } else if (httpErrorResponse.error !== '' && httpErrorResponse.error.message) {
+          } else if (httpErrorResponse.error !== '' && httpErrorResponse.error?.message) {
             this.addErrorAlert(
-              httpErrorResponse.error.detail ?? httpErrorResponse.error.message,
-              httpErrorResponse.error.message,
+              httpErrorResponse.error.detail ?? httpErrorResponse.error?.message,
+              httpErrorResponse.error?.message,
               httpErrorResponse.error.params,
             );
           } else {
@@ -80,10 +81,10 @@ export class AlertErrorComponent implements OnDestroy {
           break;
 
         default:
-          if (httpErrorResponse.error !== '' && httpErrorResponse.error.message) {
+          if (httpErrorResponse.error !== '' && httpErrorResponse.error?.message) {
             this.addErrorAlert(
-              httpErrorResponse.error.detail ?? httpErrorResponse.error.message,
-              httpErrorResponse.error.message,
+              httpErrorResponse.error.detail ?? httpErrorResponse.error?.message,
+              httpErrorResponse.error?.message,
               httpErrorResponse.error.params,
             );
           } else {

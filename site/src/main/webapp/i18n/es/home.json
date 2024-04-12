@@ -14,6 +14,9 @@
       "follow": "contacto @jhipster en Twitter"
     },
     "like": "Si te gusta JHipster, danos una estrella en",
-    "github": "GitHub"
+    "github": "GitHub",
+    "authenticatedReq": "Autenticación requerida",
+    "needLoging":"Debe loguearse para acceder a la aplicación",
+    "notifications":"Notificaciones"
   }
 }

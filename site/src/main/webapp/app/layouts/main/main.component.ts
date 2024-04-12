@@ -14,6 +14,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalInfoComponent } from '../modals/modal-info/modal-info.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, filter, map } from 'rxjs';
+import NavbarComponent from '../navbar/navbar.component';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { distinctUntilChanged, filter, map } from 'rxjs';
   standalone: true,
   templateUrl: './main.component.html',
   providers: [AppPageTitleStrategy],
-  imports: [RouterOutlet, FooterComponent, PageRibbonComponent, SideNavbarComponent, BreadcrumbBarComponent, CommonModule, MatDialogModule ],
+  imports: [RouterOutlet, FooterComponent, PageRibbonComponent, NavbarComponent, SideNavbarComponent, BreadcrumbBarComponent, CommonModule, MatDialogModule ],
 })
 export default class MainComponent implements OnInit {
   isMainPage: boolean = false;
@@ -67,14 +68,6 @@ export default class MainComponent implements OnInit {
       this.appPageTitleStrategy.updateTitle(this.router.routerState.snapshot);
       dayjs.locale(langChangeEvent.lang);
       this.renderer.setAttribute(document.querySelector('html'), 'lang', langChangeEvent.lang);
-    });
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ModalInfoComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.error(`Dialog result: ${result}`);
     });
   }
 

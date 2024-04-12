@@ -19,9 +19,14 @@ Navbar
 .navbar {
   padding: 0.2rem 1rem;
 
+  .navbar-title {
+    color: $grey_txt;
+  }
+
   a.nav-link {
     font-weight: 400;
   }
+
 }
 
 /* ==========================================================================
@@ -36,16 +41,225 @@ Logo styles
   background-size: contain;
 }
 
+
 nav {
   position: relative;
   background-color: $grey_bg;
   color: $grey_dark_txt;
-  padding-top: 1em;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .user-options-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    .info-block {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      margin-left: 20px;
+
+      button, .languages {
+        padding: 0 5px;
+        margin: 0;
+      }
+
+      ul {
+        padding: 0;
+      }
+
+    }
+
+  }
 
   .nav-link {
-    color: $grey_dark_txt;
+    color: $grey_txt;
+  }
+
+  .hamburger {
+    opacity: 0;
+  }
+
+  .menu_items {
+    z-index: 99;
+    background-color: $grey_bg;
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+
+    li a {
+      padding: 0.5em 2em;
+      display: block;
+    }
+
+    li:hover a {
+      background-color: $grey_button;
+    }
+    
+    ul {
+      padding: 0;
+
+       li {
+        list-style: none;
+
+        a {
+          display: block;
+        }
+      }
+    }
+
+    .has-dropdown {
+      position: relative;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background-color: $grey_button;
+      min-width: 9em;
+
+      /*  hide submenu  */
+      opacity: 0;
+      transform: scaleY(0);
+      transform-origin: top center;
+
+      li:hover a {
+        background-color: hsla(0, 0%, 10%, 0.30);
+        color: white;
+      }
+    }
   }
 }
+
+/*  Reveal Menu */
+.menu_items > li:hover > a + .submenu,
+.submenu > li:hover > a + .submenu {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/*  animate arrows  */
+.menu_items > li:hover > a > .arrow {
+  transform: rotate(316deg);
+}
+
+ 
+.arrow {
+  width: 0.5em;
+  height: 0.5em;
+  display: inline-block;
+  vertical-align: middle;
+  border-left: 0.15em solid currentColor;
+  border-bottom: 0.15em solid currentColor;
+  transform: rotate(226deg);
+  transition: transform 100ms ease-in-out;
+}
+
+
+@media only screen and (max-width: 58.75em) {
+  .menu li a {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 58.75em) {
+  nav {
+    position: relative;
+    top: 0;
+
+    .hamburger {
+      opacity: 1;
+    }
+
+    .menu_items {
+      flex-flow: column;
+      flex-direction: column!important;
+      align-items: center;
+      position: absolute;
+      top: 2em;
+      left: 0;
+      right: 0;
+      height: 90vh;
+      font-size: 1.5rem;
+
+      opacity: 0;
+      transform: scaleY(0);
+      transform-origin: top center;
+      transition: 200ms transform cubic-bezier(0.36, 0.4, 0.42, 1.48) 100ms, 100ms opacity ease-in-out;
+
+      li {
+        width: 100%;
+        text-align: center;
+
+        a {
+          display: block;
+          padding: 0;
+        }
+      }
+  
+      > li:hover > a + .submenu {
+        position: relative;
+      }
+  
+      .submenu {
+        top:0;
+        left: 0!important;
+        color: black;
+  
+        > li > a {
+          padding-left: 20px;
+          color: black;
+        }
+      }
+    }
+
+    .hamburguer {
+      width: 2em;
+      height: 0.25em;
+      display: block;
+      position: relative;
+      background-color: black;
+      cursor: pointer;
+
+      img {
+        width: 2em;
+        height: 0.25em;
+      }
+    }
+  }
+
+  /* reveal menu */
+  input[type="checkbox"]:checked + .menu_items{
+    position: absolute;
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  /* Ocultar el menú */
+  input[type="checkbox"]:not(:checked) + .menu_items {
+    position: absolute;
+    opacity: 0;
+    transform: scaleY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Agrega una transición suave */
+  }
+
+}
+
+@media only screen and (min-width: 58.75em) {
+  .menu_items {
+    margin-right: 100px;
+  }
+}
+
+
+
 
 #navbar-top {
     display: flex;
@@ -68,10 +282,6 @@ nav {
       width: 50px;
       height: 50px;
     }
-  }
-
-  .list-options {
-
   }
 
   .user-info-block {
@@ -108,8 +318,6 @@ nav {
 
         li span:first-child {
           color: $grey_txt;
-
-
         }
       }
 

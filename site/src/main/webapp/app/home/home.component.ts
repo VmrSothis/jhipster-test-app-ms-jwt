@@ -6,24 +6,27 @@ import { takeUntil } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
-import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
+//import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
 import LoginComponent from 'app/login/login.component';
-
+import { DashboardComponent } from 'app/dashboard/dashboard.component';
+/*
 interface СorporationInfo {
   company: string;
   y2005: number;
   y2004: number;
 }
-
+*/
 @Component({
   standalone: true,
   selector: 'jhi-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [SharedModule, RouterModule, DxChartModule, DxSelectBoxModule, LoginComponent],
+  //imports: [SharedModule, RouterModule, DxChartModule, DxSelectBoxModule, LoginComponent, DashboardComponent],
+  imports: [SharedModule, RouterModule, LoginComponent, DashboardComponent],
 })
 export default class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
+  /*
   populationData = [{
     arg: 1960,
     val: 3032019978,
@@ -88,8 +91,8 @@ corporationsInfo: СorporationInfo[] = [{
   y2005: 184.72,
   y2004: 130.52,
 }];
-
-types: string[] = ['splinearea', 'stackedsplinearea', 'fullstackedsplinearea'];
+*/
+//types: string[] = ['splinearea', 'stackedsplinearea', 'fullstackedsplinearea'];
 
   private readonly destroy$ = new Subject<void>();
 

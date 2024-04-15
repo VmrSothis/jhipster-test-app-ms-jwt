@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 
 import { StateStorageService } from 'app/core/auth/state-storage.service';
 import { ApplicationConfigService } from '../config/application-config.service';
@@ -26,6 +26,30 @@ export class AuthInterceptor implements HttpInterceptor {
         },
       });
     }
-    return next.handle(request);
+
+    const SubjectToken: string | null = this.stateStorageService.getSubjectKey();
+    if (SubjectToken) {
+      request = request.clone({
+        setHeaders: {
+          SubjectToken: SubjectToken,
+        },
+      });
+    }
+    return next.handle(request).pipe(
+      tap((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+          // Access headers here
+          const headers = event.headers;
+          console.warn('Response Headers:', headers);
+
+          const xSubjectKey = headers.get('x-powered-by');
+          if (xSubjectKey) {
+            // Do something with the 'x-subject-key' value
+            console.log('x-subject-key:', xSubjectKey);
+            this.stateStorageService.storeSubjectKey(xSubjectKey);
+          }
+        }
+      })
+    );
   }
 }

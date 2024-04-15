@@ -47,6 +47,14 @@ export class StateStorageService {
     return sessionStorage.getItem(this.localeKey);
   }
 
+  storeSubjectKey(subjectKey: string): void {
+    localStorage.setItem('subjectKey', JSON.stringify(subjectKey));
+  }
+
+  getSubjectKey(): string | null {
+    return localStorage.getItem('subjectKey');
+  }
+
   clearLocale(): void {
     sessionStorage.removeItem(this.localeKey);
   }

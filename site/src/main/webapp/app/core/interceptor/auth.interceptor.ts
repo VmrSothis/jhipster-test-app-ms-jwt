@@ -27,14 +27,15 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    const SubjectToken: string | null = this.stateStorageService.getSubjectKey();
-    if (SubjectToken) {
+    const subjectToken: string | null = this.stateStorageService.getSubjectKey();
+    if (subjectToken) {
       request = request.clone({
         setHeaders: {
-          SubjectToken: SubjectToken,
+          "x-subject-Token": subjectToken,
         },
       });
     }
+    
     return next.handle(request).pipe(
       tap((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
@@ -42,11 +43,11 @@ export class AuthInterceptor implements HttpInterceptor {
           const headers = event.headers;
           console.warn('Response Headers:', headers);
 
-          const xSubjectKey = headers.get('x-powered-by');
+          const xSubjectKey = headers.get('x-powered-by'); // change header key name to obtain
           if (xSubjectKey) {
             // Do something with the 'x-subject-key' value
             console.log('x-subject-key:', xSubjectKey);
-            this.stateStorageService.storeSubjectKey(xSubjectKey);
+            this.stateStorageService.storeSubjectToken(xSubjectKey, true);
           }
         }
       })

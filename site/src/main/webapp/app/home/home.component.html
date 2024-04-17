@@ -1,27 +1,49 @@
-<div class="row">
-  <div class="col-md-12">
-    
-    <div>
-      @if (account !== null) {
-        <div id="dashboard_panel">
-          <div class="dashb_col1 column">
-            <div class="test_options">
-              <div class="test test_home">
+@if (account) {
+  <div class="row dashboard">
 
+    <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
+      <div class="row column-block"> 
+
+        <div class="col-lg-6 col-md-12 col-sm-12 column">
+          <div class="block-50">
+
+            <div class="grid">
+              <div class="planta">
+                <div class="info">
+                  <span class="name">Planta 01</span>
+                  <span class="descrip">Planta de prueba</span>
+                </div>
               </div>
-              <div class="test test_list">
-
+              <div class="planta">
+                <div class="info">
+                  <span class="name">Planta 02</span>
+                  <span class="descrip">Planta de prueba</span>
+                </div>
               </div>
-              <div class="test test_settings">
-
+              <div class="planta">
+                <div class="info">
+                  <span class="name">Planta 03</span>
+                  <span class="descrip">Planta de prueba</span>
+                </div>
               </div>
             </div>
-            <div class="graph_div">
-              <dx-chart
+  
+            <div class="">
+              <div class="mockup-graph">
+                <div class="header">
+                  <fa-icon class="icon" icon="bell"></fa-icon>
+                  <span class="block-title">Gráfica 01</span>   
+                </div>
+                
+                <dx-chart
               id="verticalBarsChart"
               title=""
-              class="chartItem"
+              class="chartItem graph"
               [dataSource]="populationData">
+              <dxo-size
+                [height]="260"
+                [width]="400">
+              </dxo-size>
               <dxo-legend [visible]="false"></dxo-legend>
               <dxi-series type="bar"></dxi-series>
               <dxo-argument-axis [tickInterval]="10">
@@ -30,20 +52,76 @@
                 </dxo-label>
               </dxo-argument-axis>
               </dx-chart>
+              </div>
             </div>
           </div>
-          <div class="dashb_col2 column">
-            <!--Se ha añadido traducción-->
-            <h4 style="font-weight: bold;"><span jhiTranslate="home.notifications">Notificaciones</span></h4>
+
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 column">
+          
+          <div class="header">
+            <fa-icon class="icon" icon="bell"></fa-icon>
+            <span class="block-title" >Notificaciones</span>
+          </div>
+    
+          <div class="row">
+            <ul class="alert-list">
+              <li class="alert-block informative">
+                <div class="title">
+                  <fa-icon icon="warning"></fa-icon>
+                  <span class="name">Nombre de Alerta</span>
+                </div>
+                <div class="continue-icon">
+                  <fa-icon class="icon" icon="right-to-bracket"></fa-icon>
+                </div>
+              </li>
+              <li class="alert-block informative">
+                <div class="title">
+                  <fa-icon icon="warning"></fa-icon>
+                  <span class="name">Nombre de Alerta</span>
+                </div>
+                <div class="continue-icon">
+                  <fa-icon class="icon" icon="right-to-bracket"></fa-icon>
+                </div>
+              </li>
+              <li class="alert-block informative">
+                <div class="title">
+                  <fa-icon icon="warning"></fa-icon>
+                  <span class="name">Nombre de Alerta</span>
+                </div>
+                <div class="continue-icon">
+                  <fa-icon class="icon" icon="right-to-bracket"></fa-icon>
+                </div>
+              </li>
+              <li class="alert-block informative">
+                <div class="title">
+                  <fa-icon icon="warning"></fa-icon>
+                  <span class="name">Nombre de Alerta</span>
+                </div>
+                <div class="continue-icon">
+                  <fa-icon class="icon" icon="right-to-bracket"></fa-icon>
+                </div>
+              </li>
             
-            <div class="graph_div">
-              <dx-chart
+            </ul>
+          </div>
+
+          <div class="mockup-graph mt-4">
+            <div class="header">
+              <fa-icon class="icon" icon="bell"></fa-icon>
+              <span class="block-title">Gráfica 03</span>
+            </div>
+            <dx-chart
                 id="splineAreaBarsChart"
                 class="chartItem"
                 title=""
                 palette="Harmony Light"
                 [dataSource]="corporationsInfo"
               >
+              <dxo-size
+                [height]="200"
+                [width]="500">
+              </dxo-size>
                 <dxi-series valueField="y2005" name="2005"></dxi-series>
                 <dxi-series valueField="y2004" name="2004"></dxi-series>
                 <dxo-common-series-settings
@@ -55,22 +133,44 @@
                 <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
                 
               </dx-chart>
-              
-            </div>
-          </div>
-          <div class="dashb_col3 column">
-            <div class="ex_block_1"></div>
-            <div class="ex_block_1"></div>
           </div>
         </div>
-
-      
-        
-      } @else {
-        <!--Se redirecciona directamente al componente login-->
-        <jhi-login></jhi-login>
-      }
+      </div>
     </div>
-  
+
+    <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
+      <div class="mockup-graph mt-4">
+        <div class="header">
+          <fa-icon class="icon" icon="bell"></fa-icon>
+          <span class="block-title">Gráfica 03</span>
+        </div>
+        <dx-chart
+            id="splineAreaBarsChart"
+            class="chartItem"
+            title=""
+            palette="Harmony Light"
+            [dataSource]="corporationsInfo"
+          >
+          <dxo-size
+            [height]="300"
+            [width]="350">
+          </dxo-size>
+            <dxi-series valueField="y2005" name="A"></dxi-series>
+            <dxi-series valueField="y2004" name="B"></dxi-series>
+            <dxo-common-series-settings
+              #commonSeries
+              argumentField="company"
+              type="splinearea"
+            ></dxo-common-series-settings>
+            <dxo-margin [bottom]="20"></dxo-margin>
+            
+          </dx-chart>
+      </div>
+    </div>
+
   </div>
-</div>
+}@else {
+  <div class="col">
+    <h2>Debe de acreditarse</h2>
+  </div>
+}

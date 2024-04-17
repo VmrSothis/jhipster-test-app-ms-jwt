@@ -69,9 +69,17 @@
     width: 30px;
 }
 
+.mobile-hamburguer {
+    opacity: 0;
+}
+
 
 @media only screen and (max-width: 40em) {
     .sidenav {
         display: none;
+    }
+
+    .mobile-hamburguer {
+        opacity: 1;
     }
 }

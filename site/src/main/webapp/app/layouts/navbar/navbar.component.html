@@ -1,13 +1,18 @@
-<nav data-cy="navbar">
+<nav data-cy="navbar" class="">
 
   <div class="user-options-left">
-    <a class="navbar-brand logo" routerLink="/" (click)="toggleNavbar()">
-      <span class="logo-img"></span>
-      <span jhiTranslate="global.title" class="navbar-title">Inicio</span>
-      <span class="navbar-version text-black">{{ version }}</span>
-    </a>
-
+    <div class="user-block">
+      <img class="user_icon_profile" src="./content/images/ICONO_Usuario.svg" alt="">
+      <span>{{account?.firstName}}</span>
+    </div>
+    
     <div class="info-block">
+      <button>
+        <img class="operation_icon" src="./content/images/ICONO_Campana.svg" alt="">
+      </button>
+      <button>
+        <img class="operation_icon" src="./content/images/ICONO_Info.svg" alt="">
+      </button>
       <div class="languages">
         <ul class="item_dropdown">
           @if (languages && languages.length > 1) {
@@ -22,6 +27,7 @@
                       <a
                         class="dropdown-item"
                         [jhiActiveMenu]="language"
+                        ngbDropdownItem
                         href="javascript:void(0);"
                         (click)="changeLanguage(language); collapseNavbar()">
                         {{ language | findLanguageFromKey }}
@@ -34,12 +40,6 @@
           }
         </ul>
       </div>
-      <button>
-        <img class="operation_icon" src="./content/images/ICONO_Campana.svg" alt="">
-      </button>
-      <button>
-        <img class="operation_icon" src="./content/images/ICONO_Info.svg" alt="">
-      </button>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
     <img src="./content/images/ICONO_Logo_Sothis.svg" alt="">
   </div>
   
-  <label for="input-hamburguer" class="hamburger close">
+  <label for="input-hamburguer" class="hamburger hamburguer-mobile close" >
     <fa-icon icon="bars"></fa-icon>
   </label>
   <input type="checkbox" id="input-hamburguer" hidden>
@@ -68,9 +68,10 @@
                 routerLink="/organization"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
+                (click)="toogleNavbar()"
               >
-                <span jhiTranslate="global.menu.entities.organization">Organization</span>
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.organization">Organizacion</span>
               </a>
         </li>
         <li>
@@ -81,18 +82,20 @@
             [routerLinkActiveOptions]="{ exact: true }"
             (click)="collapseNavbar()"
           >
+            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
             <span jhiTranslate="global.menu.entities.site">Site</span>
           </a>
         </li>
         <li>
           <a
             class="dropdown-item menu-link"
-            [routerLink]="['/machine']"
+            [routerLink]="['/plant']"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             (click)="collapseNavbar()"
           >
-            <span jhiTranslate="global.menu.entities.machine">Planta</span>
+            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.entities.plant">Plant</span>
           </a>
         </li>
         <li>
@@ -103,45 +106,49 @@
             [routerLinkActiveOptions]="{ exact: true }"
             (click)="collapseNavbar()"
           >
+            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
             <span jhiTranslate="global.menu.entities.plantArea">Plant Area</span>
           </a>
         </li>
         <li 
-          *jhiHasAnyAuthority="['ROLE_ADMIN']">
-            <a
-              class="dropdown-item"
-              routerLink="/machine"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              (click)="collapseNavbar()"
-            >
-              <span jhiTranslate="global.menu.entities.machine">Máquina</span>
-            </a>
-        </li>
-        <li 
-          *jhiHasAnyAuthority="['ROLE_ADMIN']">
-            <a
-              class="dropdown-item"
-              routerLink="/machine-model"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              (click)="collapseNavbar()"
-            >
-              <span jhiTranslate="global.menu.entities.machineModel">Modelo Máquina</span>
-            </a>
-        </li>
-        <li 
-          *jhiHasAnyAuthority="['ROLE_ADMIN']">
-            <a
-              class="dropdown-item"
-              routerLink="/machine-documentation"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              (click)="collapseNavbar()"
-            >
-              <span jhiTranslate="global.menu.entities.machineDocumentation">Doc Máquina</span>
-            </a>
-        </li>
+            *jhiHasAnyAuthority="['ROLE_ADMIN']">
+              <a
+                class="dropdown-item"
+                routerLink="/machine"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.machine">Machine</span>
+              </a>
+          </li>
+          <li 
+            *jhiHasAnyAuthority="['ROLE_ADMIN']">
+              <a
+                class="dropdown-item"
+                routerLink="/machine-model"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.machineModel">machine-model</span>
+              </a>
+          </li>
+          <li 
+            *jhiHasAnyAuthority="['ROLE_ADMIN']">
+              <a
+                class="dropdown-item"
+                routerLink="/machine-documentation"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.machineDocumentation">Machine Documentation</span>
+              </a>
+          </li>
       </ul>
     </li>
     }
@@ -171,3 +178,43 @@
   </ul>
 
 </nav>
+<div class="sidenav">
+  <div class="toggle_btn">
+    <label for="input-hamburguer" class="hamburger close">
+      <fa-icon icon="bars"></fa-icon>
+    </label>
+    <input type="checkbox" id="input-hamburguer" [(ngModel)]="!isNavbarCollapsed" hidden>
+  </div>
+  <ul>
+      @if (account) {
+          <li>
+              <div class="list_icon">
+              <img class="sidenav_icon" (click)="navigate('/')" src="./content/images/ICONO_Inicio.svg" alt="" title="home">
+              </div>
+          </li>
+          <li>
+          <div class="list_icon">
+              <img class="sidenav_icon" src="./content/images/ICONO_Listados.svg" (click)="navigate('/list')" alt="">
+          </div>
+          </li>
+          <li>
+              <div class="list_icon">
+                  <img class="sidenav_icon" src="./content/images/ICONO_Configuracion.svg" alt="">
+              </div>
+          </li>
+          <li>
+              <div class="list_icon">
+                  <img class="sidenav_icon" (click)="navigate('admin/user-management')" src="./content/images/ICONO_Gestion_usuarios.svg" alt="" title="users">
+              </div>
+          </li>
+          <li>
+          <div class="list_icon">
+              <img class="sidenav_icon" (click)="confirmLogout()" src="./content/images/ICONO_Salir.svg" alt="" title="logout">
+          </div>
+          </li>
+      
+      } @else {
+          <li><div class="list_icon"><fa-icon (click)="login()" icon="right-from-bracket" [fixedWidth]="true"></fa-icon></div></li>
+      }
+      </ul>
+</div>

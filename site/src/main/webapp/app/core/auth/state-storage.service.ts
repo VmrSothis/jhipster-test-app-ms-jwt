@@ -58,7 +58,8 @@ export class StateStorageService {
   }
 
   getSubjectKey(): string | null {
-    return localStorage.getItem(this.subjectKey);
+    const subjectKey = localStorage.getItem(this.subjectKey) ?? sessionStorage.getItem(this.subjectKey);
+    return subjectKey ? (JSON.parse(subjectKey) as string | null) : subjectKey;
   }
 
   clearLocale(): void {

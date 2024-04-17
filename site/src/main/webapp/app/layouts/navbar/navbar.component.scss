@@ -16,8 +16,17 @@ Navbar
   width: 1.75em;
 }
 
-.navbar {
+nav {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.2rem 1rem;
+  z-index: 20;
+  background-color: $grey_bg;
+  color: $grey_dark_txt;
+  z-index: 1;
 
   .navbar-title {
     color: $grey_txt;
@@ -26,31 +35,7 @@ Navbar
   a.nav-link {
     font-weight: 400;
   }
-
-}
-
-/* ==========================================================================
-Logo styles
-========================================================================== */
-.logo-img {
-  height: 45px;
-  width: 45px;
-  display: inline-block;
-  vertical-align: middle;
-  background: url('/content/images/logo-jhipster.png') no-repeat center center;
-  background-size: contain;
-}
-
-
-nav {
-  position: relative;
-  background-color: $grey_bg;
-  color: $grey_dark_txt;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  
   .nav-link {
     color: $grey_txt;
   }
@@ -66,26 +51,44 @@ nav {
     align-items: center;
 
     .info-block {
+      display: block;
+      width: 100px;
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
+      color: $grey_txt;
       align-items: center;
-      margin-left: 20px;
 
-      button, .languages {
-        padding: 0 5px;
+      .item_dropdown {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        padding: 0 10px;
         margin: 0;
+
+        li span:first-child {
+          color: $grey_txt;
+        }
       }
 
-      ul {
+      .dropdown-menu .show {
         padding: 0;
       }
 
-    }
+      button {
+        border: 0;
+        color: $grey_txt;
+        background-color: $grey_bg;
+        display: flex;
 
+        :hover {
+          background-color: $grey_hover;
+          border-radius: 15px;
+        }  
+      }
+    }
   }
 
   .centered-logo {
+    position: relative;
     display: flex;
     flex-direction: row;
     flex: 1;
@@ -105,6 +108,17 @@ nav {
     display: flex;
     flex-direction: row;
     font-size: 1rem;
+
+    .arrow {
+      width: 0.5em;
+      height: 0.5em;
+      display: inline-block;
+      vertical-align: middle;
+      border-left: 0.15em solid currentColor;
+      border-bottom: 0.15em solid currentColor;
+      transform: rotate(226deg);
+      transition: transform 100ms ease-in-out;
+    }
 
     li a {
       padding: 0.5em 2em;
@@ -163,18 +177,25 @@ nav {
   transform: rotate(316deg);
 }
 
- 
-.arrow {
-  width: 0.5em;
-  height: 0.5em;
-  display: inline-block;
-  vertical-align: middle;
-  border-left: 0.15em solid currentColor;
-  border-bottom: 0.15em solid currentColor;
-  transform: rotate(226deg);
-  transition: transform 100ms ease-in-out;
+.item_dropdown {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0 10px;
+  margin: 0;
+
+  li span:first-child {
+    color: $grey_txt;
+  }
 }
 
+.table-icon {
+  :hover {
+    background-color: $grey_hover;
+    border-radius: 15px;
+    height: 30px;
+  } 
+}
 
 @media only screen and (max-width: 58.75em) {
   .menu li a {
@@ -182,21 +203,17 @@ nav {
   }
 }
 
-@media only screen and (max-width: 58.75em) {
   nav {
     position: relative;
     top: 0;
-
-    .hamburger {
-      opacity: 1;
-    }
+    z-index: 30;
 
     .menu_items {
       flex-flow: column;
       flex-direction: column!important;
       align-items: center;
       position: absolute;
-      top: 2em;
+      top: 2.2em;
       left: 0;
       right: 0;
       height: 90vh;
@@ -225,6 +242,7 @@ nav {
         top:0;
         left: 0!important;
         color: black;
+
   
         > li > a {
           padding-left: 20px;
@@ -246,6 +264,10 @@ nav {
         height: 0.25em;
       }
     }
+
+    .hamburguer-mobile {
+      opacity: 0;
+    }
   }
 
   /* reveal menu */
@@ -263,97 +285,98 @@ nav {
     transition: opacity 0.3s ease, transform 0.3s ease; /* Agrega una transición suave */
   }
 
-}
-
-@media only screen and (min-width: 58.75em) {
-  .menu_items {
-    margin-right: 100px;
-  }
-}
 
 
+/*    Side Navbar   */
+.sidenav {
+  height: 100%;
+  padding-top: 1em;
+  width: 60px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: $grey_bg;
+  color: $grey_dark_txt;
+  overflow: hidden;
 
-
-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-  .nav-left, .nav-right {
-    flex: 1;
-  }
-
-  .centered-logo {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-  
-    img {
-      width: 50px;
+  .toggle_btn {
+      width: 100%;
       height: 50px;
-    }
-  }
-
-  .user-info-block {
-    display: flex;
-    height: 45px;
-    flex-direction: row;
-
-    div {
-      margin: 5px;
-    }
-
-    .user-block {
-      width: 150px;
-      display:block;
-
-      .user-profile-img {
-        width: 30px;
-        height: 30px;
-      }
-    }
-
-    .info-block {
-      display: block;
-      width: 100px;
+      text-align: center;
       display: flex;
-      color: $grey_txt;
+      justify-content: center;
+      cursor: pointer;
 
-      .item_dropdown {
-        display: flex;
-        align-items: center;
-        list-style-type: none;
-        padding: 0 10px;
-        margin: 0;
-
-        li span:first-child {
-          color: $grey_txt;
-        }
-      }
-
-      button {
-        border: 0;
-        color: $grey_txt;
-        background-color: $grey_bg;
-
-        :hover {
+      :hover {
           background-color: $grey_hover;
           border-radius: 15px;
+          
           height: 30px;
-        }  
-      }
-    }
+      }  
   }
 
+  .toogle_nav_icon {
+      width: 30px;
+      height: 20px;
+      display: block;
+      margin: auto;
+  }
+
+  ul {
+      list-style-type: none;
+      list-style: none;
+      padding: 0;
+      padding-top: 30px;
+
+      li {
+          text-align: center;
+          height: 40px;
+          margin: 10px 0 ;
+          cursor: pointer;
+          display: block;
+
+          .list_icon {
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              :hover {
+                  background-color: $grey_hover;
+                  border-radius: 15px;
+              }  
+          }
+
+      }
+  }
 }
 
-.table-icon {
-  :hover {
-    background-color: $grey_hover;
-    border-radius: 15px;
-    height: 30px;
-  } 
+.sidenav_icon {
+  height: 30px;
+  width: 30px;
+}
+
+
+@media only screen and (max-width: 40em) {
+  .sidenav {
+      display: none;
+  }
+
+  nav .hamburguer-mobile {
+    opacity: 1;
+  }
+}
+
+
+/* ==========================================================================
+Logo styles
+========================================================================== */
+.logo-img {
+  height: 45px;
+  width: 45px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('/content/images/logo-jhipster.png') no-repeat center center;
+  background-size: contain;
 }

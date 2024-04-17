@@ -506,18 +506,7 @@ table.table {
 }
 
 /* Charts  */
-#verticalBarsChart {
-  padding-bottom:20%;
-  object-fit: contain;
-  max-height: 100%; 
-  max-width: 100%;
-}
 
-#splineAreaBarsChart {
-  
-  width: 100%;
-  padding-bottom:20%;
-}
 
 
 /*      LIST PAGE      */
@@ -606,5 +595,34 @@ table.table {
 .list-item-actions {
   .btn_group .list-item-actions {
     
+  }
+}
+
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.no-mobile {
+  opacity: 1;
+}
+
+.block {
+  background-color: white;
+  border-radius: 14px;
+}
+
+@media only screen and (max-width: 58.75em) {
+  .only-mobile {
+    opacity: 1;
+  }
+
+  .no-mobile {
+    opacity: 0;
+  }
+
+  .page_body {
+    padding: 0px;
   }
 }

@@ -31,7 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (subjectToken) {
       request = request.clone({
         setHeaders: {
-          "x-subject-Token": subjectToken,
+          "x-subject-Token": `${subjectToken}`,
         },
       });
     }

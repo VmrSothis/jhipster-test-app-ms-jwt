@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRouteSnapshot, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -96,7 +96,27 @@ types: string[] = ['splinearea', 'stackedsplinearea', 'fullstackedsplinearea'];
   constructor(
     private accountService: AccountService,
     private router: Router,
-  ) {}
+  ) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const segments: string[] = [];
+        let currentRoute: ActivatedRouteSnapshot = router.routerState.root.snapshot;
+          const path = currentRoute.routeConfig?.path;
+          if (path && path !== '') { // Filter out these empty paths
+            segments.push(path);
+          }
+          currentRoute = currentRoute.children[0];
+        
+        const rawPath = segments.join('/');
+        console.error(rawPath);
+        // Outputs for example: pets/:petIdentifier/food/:foodIdentifier/edit
+    
+      }
+      
+      const currentRoute: ActivatedRouteSnapshot = router.routerState.root.snapshot;
+      console.error(currentRoute);
+    });
+  }
 
   ngOnInit(): void {
     this.accountService

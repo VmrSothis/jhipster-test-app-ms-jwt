@@ -170,7 +170,13 @@
 
   </div>
 }@else {
-  <div class="col">
-    <h2>Debe de acreditarse</h2>
+  <div>
+    @if (account !== null) {
+      <!--Se muestra directamente al componente dashboard-->
+      <dashboard></dashboard>        
+    } @else {
+      <!--Se muestra directamente al componente login-->
+      <jhi-login></jhi-login>
+    }
   </div>
 }

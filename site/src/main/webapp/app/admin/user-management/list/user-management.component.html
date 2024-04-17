@@ -4,8 +4,9 @@
 
     <div id="options_header" class="">
       <div class="option_rounded colored">
-        <fa-icon class="icon" icon="search"></fa-icon>
-        <span class="label">Buscar</span>
+        <fa-icon class="icon" icon="search" (click)="searchUsers()"></fa-icon>
+        <!--<span class="label" jhiTranslate="search">Buscar</span>-->
+        <input type="text" class="form-control" [(ngModel)]="searchTerm">
       </div>
       <div class="option_rounded">
         <fa-icon class="icon" icon="plus" (click)="openUserModal(null, 'new')"></fa-icon>

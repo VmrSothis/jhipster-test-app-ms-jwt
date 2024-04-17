@@ -1,7 +1,17 @@
 {
     "home": "Inicio",
+    "login": "Iniciar sesión",
+    
     "admin": "Administración",
     "user-management": "Gestión de usuarios",
-    "organization": "Organización"
 
+    "organization": "Organización",
+
+    "site": "Site",
+
+    "machine": "Máquina",
+    "machine-model": "Modelo máquina",
+    "machine-documentation": "Documentanción máquina",
+
+    "plant-area": "Planta"
 }

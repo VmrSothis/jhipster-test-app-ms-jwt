@@ -17,12 +17,13 @@ import UserManagementDeleteDialogComponent from '../delete/user-management-delet
 import { ModalInfoComponent } from 'app/layouts/modals/modal-info/modal-info.component';
 import { MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { UserInfoModalComponent } from 'app/layouts/modals/user-info-modal/user-info-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'jhi-user-mgmt',
   templateUrl: './user-management.component.html',
-  imports: [RouterModule, SharedModule, MatDialogModule, SortDirective, SortByDirective, UserManagementDeleteDialogComponent, ItemCountComponent ],
+  imports: [RouterModule, SharedModule, MatDialogModule, SortDirective, SortByDirective, UserManagementDeleteDialogComponent, ItemCountComponent, FormsModule ],
 })
 export default class UserManagementComponent implements OnInit {
   currentAccount: Account | null = null;
@@ -34,6 +35,7 @@ export default class UserManagementComponent implements OnInit {
   predicate!: string;
   ascending!: boolean;
   dialogConfig = new MatDialogConfig();
+  searchTerm: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -104,6 +106,30 @@ export default class UserManagementComponent implements OnInit {
         error: () => (this.isLoading = false),
       });
   }
+  
+  searchUsers(): void {
+    // Si el término de búsqueda está vacío, cargamos todos los usuarios
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.loadAll();
+      return;
+    }
+  
+    // Realiza la búsqueda de usuarios utilizando el término de búsqueda actual
+    this.isLoading = true;
+    this.userService.find(this.searchTerm).subscribe({
+      next: (user: User) => {
+        this.isLoading = false;
+        if (user) {
+          this.users = [user]; // Si se encuentra un usuario, lo asignamos a la lista de usuarios
+        } else {
+          this.users = []; // Si no se encuentra ningún usuario, asignamos una lista vacía
+        }
+      },
+      error: () => (this.isLoading = false),
+    });
+  }
+  
+  
 
   transition(): void {
     this.router.navigate(['./'], {

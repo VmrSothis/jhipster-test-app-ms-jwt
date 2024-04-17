@@ -6,15 +6,15 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'breadcrumb-bar', 
+  selector: 'breadcrumb-bar',
   standalone: true, // Indica que el componente no depende de otros
   imports: [CommonModule, TranslateModule], // Módulos que el componente necesita
   templateUrl: './breadcrumb-bar.component.html',
-  styleUrls: ['./breadcrumb-bar.component.scss'] 
+  styleUrls: ['./breadcrumb-bar.component.scss']
 })
-export class BreadcrumbBarComponent implements OnInit { 
+export class BreadcrumbBarComponent implements OnInit {
 
-  breadcrumbItems: { label: string, url: string }[] = []; 
+  breadcrumbItems: { label: string, url: string }[] = [];
 
   constructor(private location: Location, private router: Router, private route: ActivatedRoute) { }
 
@@ -36,7 +36,7 @@ export class BreadcrumbBarComponent implements OnInit {
   private generateBreadcrumbs(urlSegments: string[]): { label: string, url: string }[] {
     const breadcrumbs: { label: string, url: string }[] = [];
 
-    breadcrumbs.push({ label: 'home', url: '' }); // Agrega "Inicio" como primera miga de pan
+    breadcrumbs.push({ label: 'breadcrumb.home', url: '' }); // Agrega "Inicio" como primera miga de pan
 
     for (let i = 0; i < urlSegments.length; i++) {
       const currentUrl = `/${urlSegments.slice(0, i + 1).join('/')}`; // Construye la URL acumulativa hasta el segmento actual
@@ -44,7 +44,7 @@ export class BreadcrumbBarComponent implements OnInit {
       if (matchingBreadcrumb) { // Si la URL acumulativa existe en las migas de pan
         breadcrumbs.push(matchingBreadcrumb); // Agrega la miga de pan correspondiente
       } else { // Si la URL acumulativa no existe en las migas de pan
-        breadcrumbs.push({ label: urlSegments[i], url: currentUrl }); // Agrega el segmento de la URL como nueva miga de pan
+        breadcrumbs.push({ label: 'breadcrumb.' + urlSegments[i], url: currentUrl }); // Agrega el segmento de la URL como nueva miga de pan
       }
     }
     return breadcrumbs;

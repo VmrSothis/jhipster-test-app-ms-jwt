@@ -1,17 +1,14 @@
 {
-    "home": "Home",
-    "login": "Login",
-    
-    "admin": "Administration",
-    "user-management": "User Management",
-
-    "organization": "Organization",
-
-    "site": "Site",
-
-    "machine": "Machine",
-    "machine-model": "Machine Model",
-    "machine-documentation": "Machine Documentation",
-
-    "plant-area": "Plant Area"
+    "breadcrumb": {
+        "home": "Home",
+        "login": "Login",
+        "admin": "Administration",
+        "user-management": "User Management",
+        "organization": "Organization",
+        "site": "Site",
+        "machine": "Machine",
+        "machine-model": "Machine Model",
+        "machine-documentation": "Machine Documentation",
+        "plant-area": "Plant Area"
+    }
 }

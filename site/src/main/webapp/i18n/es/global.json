@@ -149,5 +149,6 @@
       "not.image": "Se esperaba que el fichero fuera una imagen pero se encontro \"{{ fileType }}\""
     }
   },
-  "footer": "Pie de página"
+  "footer": "Pie de página",
+  "search":"Buscar"
 }

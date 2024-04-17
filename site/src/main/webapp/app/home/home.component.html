@@ -3,78 +3,12 @@
     
     <div>
       @if (account !== null) {
-        <!--
-        <div id="dashboard_panel">
-          <div class="dashb_col1 column">
-            <div class="test_options">
-              <div class="test test_home">
-
-              </div>
-              <div class="test test_list">
-
-              </div>
-              <div class="test test_settings">
-
-              </div>
-            </div>
-            <div class="graph_div">
-              <dx-chart
-              id="verticalBarsChart"
-              title=""
-              class="chartItem"
-              [dataSource]="populationData">
-              <dxo-legend [visible]="false"></dxo-legend>
-              <dxi-series type="bar"></dxi-series>
-              <dxo-argument-axis [tickInterval]="10">
-                <dxo-label>
-                  <dxo-format type="decimal"></dxo-format>
-                </dxo-label>
-              </dxo-argument-axis>
-              </dx-chart>
-            </div>
-          </div>
-          <div class="dashb_col2 column">
-
-            <h4 style="font-weight: bold;"><span jhiTranslate="home.notifications">Notificaciones</span></h4>
-            
-            <div class="graph_div">
-              <dx-chart
-                id="splineAreaBarsChart"
-                class="chartItem"
-                title=""
-                palette="Harmony Light"
-                [dataSource]="corporationsInfo"
-              >
-                <dxi-series valueField="y2005" name="2005"></dxi-series>
-                <dxi-series valueField="y2004" name="2004"></dxi-series>
-                <dxo-common-series-settings
-                  #commonSeries
-                  argumentField="company"
-                  type="splinearea"
-                ></dxo-common-series-settings>
-                <dxo-margin [bottom]="20"></dxo-margin>
-                <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
-                
-              </dx-chart>
-              
-            </div>
-          </div>
-          <div class="dashb_col3 column">
-            <div class="ex_block_1"></div>
-            <div class="ex_block_1"></div>
-          </div>
-        </div>
-       
-      -->
-       
-      <dashboard></dashboard>
-      
-        
+        <!--Se muestra directamente al componente dashboard-->
+        <dashboard></dashboard>        
       } @else {
-        <!--Se redirecciona directamente al componente login-->
+        <!--Se muestra directamente al componente login-->
         <jhi-login></jhi-login>
       }
     </div>
-  
   </div>
 </div>

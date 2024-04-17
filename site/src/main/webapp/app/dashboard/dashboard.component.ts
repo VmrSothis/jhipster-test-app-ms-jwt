@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
-import SharedModule from 'app/shared/shared.module';
 
 interface СorporationInfo {
   company: string;
@@ -11,11 +10,11 @@ interface СorporationInfo {
 @Component({
   selector: 'dashboard',
   standalone: true,
-  imports: [DxChartModule, DxSelectBoxModule, SharedModule],
+  imports: [DxChartModule, DxSelectBoxModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent {
 
   populationData = [{
     arg: 1960,
@@ -83,12 +82,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }];
 
   types: string[] = ['splinearea', 'stackedsplinearea', 'fullstackedsplinearea'];
-
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
 }

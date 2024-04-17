@@ -1,21 +1,9 @@
 <div class="breadcrumb-bar">
-<<<<<<< HEAD
   <span class="go_back_button pointerItem" (click)="goBack()"><</span>
-    <div class="breadcrumbs">
-        <span>Inicio</span>
-        <div class="breadcrumb-separator">/</div>
-        <span>Usuarios</span>
-        <div class="breadcrumb-separator">/</div>
-        <span>Listado de Usuarios</span>
-    </div>
-    
-=======
-  <span class="go_back_button pointerItem" (click)="goBack()"></span>
   <div class="breadcrumbs">
     <ng-container *ngFor="let item of breadcrumbItems; let last = last">
       <span>{{ item.label | translate }}</span>
       <div class="breadcrumb-separator" *ngIf="!last">/</div>
     </ng-container>
   </div>
->>>>>>> master
 </div>

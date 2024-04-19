@@ -34,27 +34,16 @@
                   <span class="block-title">Gráfica 01</span>   
                 </div>
                 
-                <dx-chart
-                id="verticalBarsChart"
-                title=""
-                class="chartItem graph"
-                [dataSource]="populationData"
-                (onDone)="done()">
-              <dxo-size
-                [height]="260"
-                [width]="400">
-              </dxo-size>
-              <dxo-legend [visible]="false"></dxo-legend>
-              <dxi-series type="bar"></dxi-series>
-              <dxo-argument-axis [tickInterval]="10" [(visualRange)]="visualRange">
-                <dxo-label>
-                  <dxo-format type="decimal"></dxo-format>
-                </dxo-label>
-              </dxo-argument-axis>
-              <dxo-loading-indicator backgroundColor="none">
-                <dxo-font [size]="14"></dxo-font>
-              </dxo-loading-indicator>
-              </dx-chart>
+                <dx-chart id="splineAreaBarsChart" class="chartItem" title="" palette="Harmony Light"
+                [dataSource]="corporationsInfo">
+                <dxi-series valueField="y2005" name="2005"></dxi-series>
+                <dxi-series valueField="y2004" name="2004"></dxi-series>
+                <dxo-common-series-settings #commonSeries argumentField="company"
+                    type="splinearea"></dxo-common-series-settings>
+                <dxo-margin [bottom]="20"></dxo-margin>
+                <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
+
+            </dx-chart>
               </div>
             </div>
           </div>
@@ -110,28 +99,15 @@
               <fa-icon class="icon" icon="bell"></fa-icon>
               <span class="block-title">Gráfica 03</span>
             </div>
-            <dx-chart
-                id="splineAreaBarsChart"
-                class="chartItem"
-                title=""
-                palette="Harmony Light"
-                [dataSource]="corporationsInfo"
-              >
-              <dxo-size
-                [height]="200"
-                [width]="500">
-              </dxo-size>
-                <dxi-series valueField="y2005" name="2005"></dxi-series>
-                <dxi-series valueField="y2004" name="2004"></dxi-series>
-                <dxo-common-series-settings
-                  #commonSeries
-                  argumentField="company"
-                  type="splinearea"
-                ></dxo-common-series-settings>
-                <dxo-margin [bottom]="20"></dxo-margin>
-                <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
-                <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
-              </dx-chart>
+            <dx-chart id="verticalBarsChart" title="" class="chartItem" [dataSource]="populationData">
+              <dxo-legend [visible]="false"></dxo-legend>
+              <dxi-series type="bar"></dxi-series>
+              <dxo-argument-axis [tickInterval]="1">
+                  <dxo-label>
+                      <dxo-format type="decimal"></dxo-format>
+                  </dxo-label>
+              </dxo-argument-axis>
+          </dx-chart>
           </div>
         </div>
       </div>
@@ -143,27 +119,16 @@
           <fa-icon class="icon" icon="bell"></fa-icon>
           <span class="block-title">Gráfica 03</span>
         </div>
-        <dx-chart
-            id="splineAreaBarsChart"
-            class="chartItem"
-            title=""
-            palette="Harmony Light"
-            [dataSource]="corporationsInfo"
-          >
-          <dxo-size
-            [height]="300"
-            [width]="350">
-          </dxo-size>
-            <dxi-series valueField="y2005" name="A"></dxi-series>
-            <dxi-series valueField="y2004" name="B"></dxi-series>
-            <dxo-common-series-settings
-              #commonSeries
-              argumentField="company"
-              type="splinearea"
-            ></dxo-common-series-settings>
-            <dxo-margin [bottom]="20"></dxo-margin>
-            <dxo-loading-indicator [enabled]="true"></dxo-loading-indicator>
-          </dx-chart>
+        <dx-chart id="splineAreaBarsChart" class="chartItem" title="" palette="Harmony Light"
+                [dataSource]="corporationsInfo">
+                <dxi-series valueField="y2005" name="2005"></dxi-series>
+                <dxi-series valueField="y2004" name="2004"></dxi-series>
+                <dxo-common-series-settings #commonSeries argumentField="company"
+                    type="splinearea"></dxo-common-series-settings>
+                <dxo-margin [bottom]="20"></dxo-margin>
+                <dxo-argument-axis [valueMarginsEnabled]="false"></dxo-argument-axis>
+
+            </dx-chart>
       </div>
     </div>
 

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import SharedModule from 'app/shared/shared.module';
 import { DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
+import { VisualRange } from 'devextreme/common/charts';
 
 interface СorporationInfo {
   company: string;
@@ -10,7 +12,7 @@ interface СorporationInfo {
 @Component({
   selector: 'dashboard',
   standalone: true,
-  imports: [DxChartModule, DxSelectBoxModule],
+  imports: [DxChartModule, DxSelectBoxModule, SharedModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -82,4 +84,17 @@ export class DashboardComponent {
   }];
 
   types: string[] = ['splinearea', 'stackedsplinearea', 'fullstackedsplinearea'];
+
+  visualRange: VisualRange = {
+    startValue: new Date(1960),
+    length: {
+      weeks: 2,
+    },
+  };
+
+  constructor(private cd: ChangeDetectorRef) {
+  }
+
+  done(): void {
+  }
 }

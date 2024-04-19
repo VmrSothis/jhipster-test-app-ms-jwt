@@ -57,12 +57,9 @@ export default class MainComponent implements OnInit {
   ngOnInit(): void {
     // try to log in automatically
     this.accountService.identity().subscribe();
-    console.error(this.isMainPage)
     this.breakpoint$.subscribe(() =>
       this.breakpointChanged()
     );
-
-    console.error(this.router.url);
 
     this.translateService.onLangChange.subscribe((langChangeEvent: LangChangeEvent) => {
       this.appPageTitleStrategy.updateTitle(this.router.routerState.snapshot);

@@ -152,29 +152,17 @@
       </ul>
     </li>
     }
-    @if (languages && languages.length > 1) {
-    <li class="has-dropdown" ngbDropdown>
-      <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="languagesnavBarDropdown">
-        <span>
-          <fa-icon icon="flag"></fa-icon>
-          <span jhiTranslate="global.menu.language">Idioma</span>
-        </span>
+    <li *jhiHasAnyAuthority="['ROLE_ADMIN']">
+      <a
+        class="menu-link"
+        routerLink="/admin/user-management"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="toogleNavbar()"
+      >
+        <span jhiTranslate="global.menu.admin.userManagement">Gestión de usuarios</span>
       </a>
-      <ul class="submenu dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
-        @for (language of languages; track $index) {
-          <li>
-            <a
-              class="dropdown-item"
-              [jhiActiveMenu]="language"
-              href="javascript:void(0);"
-              (click)="changeLanguage(language); collapseNavbar()"
-              >{{ language | findLanguageFromKey }}</a
-            >
-          </li>
-        }
-      </ul>
     </li>
-    }
   </ul>
 
 </nav>

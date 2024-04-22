@@ -9,6 +9,7 @@
         "machine": "Machine",
         "machine-model": "Machine Model",
         "machine-documentation": "Machine Documentation",
+        "plant": "Plant",
         "plant-area": "Plant Area"
     }
 }

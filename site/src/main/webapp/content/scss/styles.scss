@@ -123,6 +123,25 @@
       }
     }
   }
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    
+    .form-group {
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+
+      label {
+        font-size: 18px;
+      }
+
+      span {
+        color: $grey_txt;
+      }
+    }
+  }
   
   
   /* SCROLLABLE TABLE */
@@ -219,6 +238,8 @@
   }
   
   @media only screen and (max-width: 600px) {
+
+
     #dashboard_panel {
       .column {
         flex: 100%;

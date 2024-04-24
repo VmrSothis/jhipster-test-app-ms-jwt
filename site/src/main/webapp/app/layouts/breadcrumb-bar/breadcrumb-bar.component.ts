@@ -18,7 +18,7 @@ export class BreadcrumbBarComponent implements OnInit {
 
   constructor(private location: Location, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() { // Método del ciclo de vida que se ejecuta al inicializar el componente
+  ngOnInit(): void { // Método del ciclo de vida que se ejecuta al inicializar el componente
     // Suscribe un observador a los eventos de navegación del router para actualizar las migas de pan
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -30,6 +30,16 @@ export class BreadcrumbBarComponent implements OnInit {
     // Genera las migas de pan por primera vez al inicializar el componente
     const urlSegments = this.router.url.split('/').filter(segment => segment !== '');
     this.breadcrumbItems = this.generateBreadcrumbs(urlSegments); // Genera las migas de pan
+  }
+
+  // Retrocede en la historia del navegador
+  goBack(): void {
+    this.location.back();
+  }
+
+  // Método para redireccionar a la URL especificada
+  navigateTo(url: string): void {
+    this.router.navigateByUrl(url);
   }
 
   private generateBreadcrumbs(urlSegments: string[]): { label: string, url: string }[] {
@@ -46,15 +56,5 @@ export class BreadcrumbBarComponent implements OnInit {
       }
     }
     return breadcrumbs;
-  }
-
-  // Retrocede en la historia del navegador
-  goBack(): void {
-    this.location.back();
-  }
-
-  // Método para redireccionar a la URL especificada
-  navigateTo(url: string): void {
-    this.router.navigateByUrl(url);
   }
 }

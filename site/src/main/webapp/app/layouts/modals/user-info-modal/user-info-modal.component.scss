@@ -1,16 +1,17 @@
 @import './content/scss/variables';
 
-/*       Dialogs        */
+/* Dialogs */
 
 .dialog_card {
     border: 3px solid lightblue;
     border-radius: 14px;
     padding: 8px 12px;
-    margin:  10px 0;
+    margin: 10px 0;
+    width: 100%; // Asegura que sea flexible y adaptable
 
     .group_title {
         font-weight: bold;
-        font-size: 20px;
+        font-size: 1.25rem; // Uso de rem para escalabilidad
         color: lightblue;
     }
 
@@ -18,15 +19,20 @@
         display: flex;
         flex-wrap: wrap;
         align-content: stretch;
-        
-        .group_input {
-            width: 50%;
-            padding: 10px;
+    }
 
-            label {
-                font-weight: 400!important;
-                color: $green_hover;
-            }
+    .group_input {
+        flex: 1 0 100%; // Flexibilidad con la propiedad flex
+        padding: 10px;
+        box-sizing: border-box; // Incluye padding en el cálculo del ancho
+
+        @media (min-width: 576px) { // Ajuste para pantallas más grandes
+            flex-basis: 50%; // Mejor control sobre el ancho en responsive
+        }
+
+        label {
+            font-weight: 400 !important;
+            color: $green_hover; // Uso de variable para el color
         }
     }
 }

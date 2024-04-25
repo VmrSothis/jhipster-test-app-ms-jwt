@@ -13,8 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./breadcrumb-bar.component.scss']
 })
 export class BreadcrumbBarComponent implements OnInit {
-
   breadcrumbItems: { label: string, url: string }[] = [];
+  isDashboard: boolean = false;
 
   constructor(private location: Location, private router: Router, private route: ActivatedRoute) { }
 
@@ -23,38 +23,49 @@ export class BreadcrumbBarComponent implements OnInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      const urlSegments = this.router.url.split('/').filter(segment => segment !== ''); // Obtiene segmentos de la URL y elimina los vacíos
+      this.isDashboard = (this.router.url === "/");
+      const urlSegments: string[] = this.router.url.split('/').filter(segment => segment !== ''); // Obtiene segmentos de la URL y elimina los vacíos
       this.breadcrumbItems = this.generateBreadcrumbs(urlSegments); // Genera las migas de pan basadas en los segmentos de la URL
     });
 
     // Genera las migas de pan por primera vez al inicializar el componente
-    const urlSegments = this.router.url.split('/').filter(segment => segment !== '');
+    const urlSegments: string[] = this.router.url.split('/').filter(segment => segment !== '');
     this.breadcrumbItems = this.generateBreadcrumbs(urlSegments); // Genera las migas de pan
   }
 
-  // Retrocede en la historia del navegador
+
+
   goBack(): void {
     this.location.back();
   }
 
-  // Método para redireccionar a la URL especificada
-  navigateTo(url: string): void {
-    this.router.navigateByUrl(url);
+  navigate(url: string):void {
+    this.router.navigate([url]);
   }
 
+  // Genera las migas de pan basadas en los segmentos de la URL
   private generateBreadcrumbs(urlSegments: string[]): { label: string, url: string }[] {
     const breadcrumbs: { label: string, url: string }[] = [];
-
-    breadcrumbs.push({ label: 'breadcrumb.home', url: '' });
-
+  
+    breadcrumbs.push({ label: 'breadcrumb.home', url: '' }); // Agrega "Inicio" como primera miga de pan
+  
+    let currentUrl: string = ''; // Declarar la variable currentUrl fuera del bucle
+  
     for (let i = 0; i < urlSegments.length; i++) {
-      const currentUrl = `/${urlSegments.slice(0, i + 1).join('/')}`;
-      const matchingBreadcrumb = this.breadcrumbItems.find(item => item.url === currentUrl);
-      // Mantener la lógica anterior y agregar la condición para omitir "admin"
-      if (!matchingBreadcrumb && urlSegments[i] !== 'admin') {
-        breadcrumbs.push({ label: 'breadcrumb.' + urlSegments[i], url: currentUrl });
+      console.error(currentUrl);
+      // if (currentUrl === "/admin") { return breadcrumbs; }
+      const currentUrlSegment: string = urlSegments[i].replace(/[0-9]/g, '').split('?')[0];
+      currentUrl += currentUrlSegment ? `/${currentUrlSegment}` : ''; // Concatenar el segmento actual a la URL acumulativa
+      
+      if (!currentUrl) { return breadcrumbs; }
+      const matchingBreadcrumb: { label: string; url: string; } | undefined = breadcrumbs.find(item => item.url.includes(currentUrlSegment)); // Busca si la URL acumulativa ya existe en las migas de pan
+      const isAdminPathSegment: boolean = (currentUrl === "/admin");
+      if (!matchingBreadcrumb && !isAdminPathSegment) {   // Si la sección actual no se encuentra ya dentro de los breadcrumbs
+        breadcrumbs.push({ label: 'breadcrumb.' + currentUrlSegment, url: currentUrl }); // Agrega el segmento de la URL como nueva miga de pan
       }
+      
     }
     return breadcrumbs;
   }
+
 }

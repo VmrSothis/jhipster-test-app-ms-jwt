@@ -29,6 +29,21 @@
 
   @if (users) {
   <div class="table-responsive">
+    <div id="options_header" class="">
+      <div class="option_rounded full-hover colored">
+        <fa-icon class="icon" icon="search"></fa-icon>
+        <span class="label">Buscar</span>
+      </div>
+      <div class="option_rounded full-hover colored">
+        <fa-icon class="icon" icon="plus"></fa-icon>
+        <span class="label">Permiso</span>
+      </div>
+      <div class="option_rounded full-hover colored">
+        <fa-icon class="icon" icon="plus"></fa-icon>
+        <span class="label">Nuevo Rol</span>
+      </div>
+    </div>
+
     <table class="table table-striped" aria-describedby="user-management-page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="transition()">

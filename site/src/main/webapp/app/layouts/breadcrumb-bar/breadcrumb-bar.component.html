@@ -1,10 +1,10 @@
 <div class="breadcrumb-bar">
-  <span class="go_back_button pointerItem" (click)="goBack()"><</span>
+  <div class="go_back" (click)="goBack()" >
+    <div class="go_back_button"><span class="arrow" *ngIf="!isDashboard"></span></div>
+  </div>
   <div class="breadcrumbs">
     <ng-container *ngFor="let item of breadcrumbItems; let last = last">
-      <a *ngIf="!last" class="breadcrumb-link pointerItem" (click)="navigateTo(item.url)">
-        {{ item.label | translate }}
-      </a>
+      <span *ngIf="!last" (click)="navigate(item.url)" class="breadc-item">{{ item.label | translate }}</span>
       <span *ngIf="last">{{ item.label | translate }}</span>
       <div class="breadcrumb-separator" *ngIf="!last">/</div>
     </ng-container>

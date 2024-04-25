@@ -38,7 +38,6 @@
     }
   }
   
-  
   .page_body.sidenav_opened {
     margin-right: 60px;
   }
@@ -288,7 +287,14 @@
       &.colored {
         background-color: $green_list_item;
       }
-      
+
+      &.full-hover {
+        &:hover {
+          background-color: $grey_txt;
+          color: white;
+        }
+      }
+
       .icon {
         display: flex;
         align-items: center;
@@ -350,16 +356,19 @@
       background-color: darken($green_list_item, 20%);
     }
   }
-  
-  .list-item-actions {
-    .btn_group .list-item-actions {
-      
-    }
+
+
+  .btn-group .table-icon {
+      padding: 0px 6px!important;
+      color: black;
+
+      svg {
+        height: 18px;
+      }
   }
-  
-  
+
   ul {
-    padding: 0;
+    padding: 0!important;
     margin: 0;
   }
   

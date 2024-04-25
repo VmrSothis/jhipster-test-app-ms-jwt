@@ -1,9 +1,10 @@
-<div class="page_body" [ngClass]="{'sidenav_opened': !isMobile}" >
-  
-  <div>
-    <jhi-navbar></jhi-navbar>
-    <breadcrumb-bar></breadcrumb-bar>
-  </div>
+<div >
+  <jhi-navbar></jhi-navbar>
+  <breadcrumb-bar></breadcrumb-bar>
+</div>
+
+<div class="page_body" [ngClass]="{'sidenav_opened': !isMobile}">
+
   
   <div class="container-fluid router-body" [ngClass]="{'main': isMainPage }">
     <div class="card jh-card" >

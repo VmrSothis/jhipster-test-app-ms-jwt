@@ -174,19 +174,16 @@
               </td>
               <td class="text-end">
                 <div class="btn-group">
-                  <a [routerLink]="['/machine', machine.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
-                    <fa-icon icon="eye"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  <a class="table-icon" [routerLink]="['/machine', machine.id, 'view']" data-cy="entityDetailsButton">
+                    <fa-icon color="black" icon="eye"></fa-icon>
                   </a>
 
-                  <a [routerLink]="['/machine', machine.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                    <fa-icon icon="pencil-alt"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  <a class="table-icon" [routerLink]="['/machine', machine.id, 'edit']" data-cy="entityEditButton">
+                    <img class="operation_icon" src="./content/images/ICONO_Editar.svg" alt="">
                   </a>
 
-                  <button type="submit" (click)="delete(machine)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                    <fa-icon icon="times"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  <button (click)="delete(machine)" data-cy="entityDeleteButton">
+                    <img class="operation_icon" src="./content/images/ICONO_Eliminar.svg" alt="">
                   </button>
                 </div>
               </td>

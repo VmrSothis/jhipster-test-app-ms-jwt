@@ -26,14 +26,14 @@ import { ModalInfoComponent } from '../modals/modal-info/modal-info.component';
   imports: [RouterModule, SharedModule, HasAnyAuthorityDirective, ActiveMenuDirective, FormsModule],
 })
 export default class NavbarComponent implements OnInit {
-  inProduction?: boolean;
-  isNavbarCollapsed = true;
-  languages = LANGUAGES;
-  openAPIEnabled?: boolean;
-  version = '';
+  inProduction?: boolean = false;
+  isNavbarCollapsed: boolean = true;
+  languages: string[] = LANGUAGES;
+  openAPIEnabled?: boolean = false;
+  version: string = '';
   account: Account | null = null;
   entitiesNavbarItems: NavbarItem[] = [];
-  dialogConfig = new MatDialogConfig();
+  dialogConfig: MatDialogConfig<any> = new MatDialogConfig();
 
   constructor(
     public dialog: MatDialog,

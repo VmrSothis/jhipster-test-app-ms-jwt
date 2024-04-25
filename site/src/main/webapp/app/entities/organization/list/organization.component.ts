@@ -170,6 +170,4 @@ export class OrganizationComponent implements OnInit {
       return [predicate + ',' + ascendingQueryParam];
     }
   }
-
-  
 }

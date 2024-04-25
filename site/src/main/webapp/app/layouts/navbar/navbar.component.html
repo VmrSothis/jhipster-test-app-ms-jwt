@@ -1,53 +1,57 @@
 <nav data-cy="navbar" class="">
 
-  <div class="user-options-left">
-    <div class="user-block">
-      <img class="user_icon_profile" src="./content/images/ICONO_Usuario.svg" alt="">
-      <span>{{account?.firstName}}</span>
-    </div>
-    
-    <div class="info-block">
-      <button>
-        <img class="operation_icon" src="./content/images/ICONO_Campana.svg" alt="">
-      </button>
-      <button>
-        <img class="operation_icon" src="./content/images/ICONO_Info.svg" alt="">
-      </button>
-      <div class="languages">
-        <ul class="item_dropdown">
-          @if (languages && languages.length > 1) {
-            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic">
-              <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
-                <span>
-                  <fa-icon icon="flag"></fa-icon>
-                </span>
-                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
-                  @for (language of languages; track $index) {
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        [jhiActiveMenu]="language"
-                        ngbDropdownItem
-                        href="javascript:void(0);"
-                        (click)="changeLanguage(language); collapseNavbar()">
-                        {{ language | findLanguageFromKey }}
-                      </a>
-                    </li>
-                  }
-                </ul>
-              </a>
-            </li>
-          }
-        </ul>
+  <div class="navbar-items">
+    <div class="user-options-left">
+      <div class="user-block">
+        <img class="user_icon_profile" src="./content/images/ICONO_Usuario.svg" alt="">
+        <span>{{account?.firstName}}</span>
       </div>
+      
+      <div class="info-block">
+        <button>
+          <img class="operation_icon" src="./content/images/ICONO_Campana.svg" alt="">
+        </button>
+        <button>
+          <img class="operation_icon" src="./content/images/ICONO_Info.svg" alt="">
+        </button>
+        <div class="languages">
+          <ul class="item_dropdown">
+            @if (languages && languages.length > 1) {
+              <li ngbDropdown class="nav-item dropdown pointer" display="dynamic">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
+                  <span>
+                    <fa-icon icon="flag"></fa-icon>
+                  </span>
+                  <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
+                    @for (language of languages; track $index) {
+                      <li>
+                        <a
+                          class="dropdown-item"
+                          [jhiActiveMenu]="language"
+                          ngbDropdownItem
+                          href="javascript:void(0);"
+                          (click)="changeLanguage(language); collapseNavbar()">
+                          {{ language | findLanguageFromKey }}
+                        </a>
+                      </li>
+                    }
+                  </ul>
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+    <div class="centered-logo no-mobile">
+      <img src="./content/images/ICONO_Logo_Sothis.svg" alt="">
     </div>
   </div>
 
-  <div class="centered-logo no-mobile">
-    <img src="./content/images/ICONO_Logo_Sothis.svg" alt="">
-  </div>
   
-  <label for="input-hamburguer" class="hamburger hamburguer-mobile close" >
+  
+  <label for="input-hamburguer" class="hamburguer hamburguer-mobile close" >
     <fa-icon icon="bars"></fa-icon>
   </label>
   <input type="checkbox" id="input-hamburguer" hidden>
@@ -168,7 +172,7 @@
 </nav>
 <div class="sidenav">
   <div class="toggle_btn">
-    <label for="input-hamburguer" class="hamburger close">
+    <label for="input-hamburguer" class="hamburguer close">
       <fa-icon icon="bars"></fa-icon>
     </label>
     <input type="checkbox" id="input-hamburguer" [(ngModel)]="!isNavbarCollapsed" hidden>

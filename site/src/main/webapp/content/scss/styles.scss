@@ -53,76 +53,80 @@
   }
   
   
-  table.table {
-    width: 100%;
-    background-color: white!important;
-    border-collapse: separate;
-    border-spacing: 0px 15px;
-    color: $green_list_item;
-    font-weight: 500;
-    min-width: 480px;
-  
-  
-    thead tr th{
-      color: $grey_txt;
-      font-weight: 400;
-      border: 0px;
-      margin: 0;
-      padding-bottom: 0;
-    }
-  
-    tbody td, thead th {
-      //width: 20%;  /* Optional */
+/* Estilos básicos para la tabla */
+.table {
+  width: 100%;
+  background-color: white !important;
+  border-collapse: separate;
+  border-spacing: 0 15px; /* Ajuste para que el border-spacing solo aplique verticalmente */
+  color: $green_list_item;
+  font-weight: 500;
+  //min-width: 200px;
+}
+
+.table thead tr th {
+  color: $grey_txt;
+  font-weight: 400;
+  border: 0;
+  margin: 0;
+  padding: 10px; /* Añadido padding uniforme */
+  background-color: #f9f9f9;
+  vertical-align: middle; /* Asegura que el texto está centrado verticalmente */
+}
+
+.table tbody td {
+  background-color: $green_list_item !important;
+  padding: 10px; /* Añadido padding uniforme para alinear con thead */
+  display: table-cell; /* Asegura comportamiento de celda de tabla */
+  vertical-align: middle; /* Asegura que el texto está centrado verticalmente */
+}
+
+/* Bordes redondeados para la primera y última celda de cada fila */
+.table tbody tr td:first-of-type {
+  border-radius: 30px 0 0 30px;
+}
+
+.table tbody tr td.text-end:last-of-type,
+.table tbody tr td:last-child {
+  border-radius: 0 30px 30px 0;
+}
+
+/* Media Queries para ajustar la visualización en pantallas menores de 1200px */
+@media (max-width: 1200px) {
+  /* Oculta todas las columnas excepto la segunda, tercera y última */
+  .table thead th, .table tbody tr td {
+    display: none;
   }
-  
-    tr {
-      margin: 10px!important;
-  
-      th {
-        :first-of-type {
-          margin-left: 10px;
-        }
-      }
-  
-      td {
-        background-color: $green_list_item!important;
-  
-  
-        span {
-          width: 110px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  
-        * {
-          display: flex;
-        }
-  
-        &:first-child {
-          margin-left: 20px;
-          padding-left: 20px;
-        }
-  
-        .table-icon {
-          height: 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        
-      }
-  
-  
-      td:first-of-type {
-        border-radius: 30px 0 0 30px;
-      }
-  
-      td.text-end:last-of-type {
-        border-radius: 0 30px 30px 0;
-      }
-    }
+
+  .table thead th:nth-child(2), .table thead th:nth-child(3), .table thead th:last-child,
+  .table tbody tr td:nth-child(2), .table tbody tr td:nth-child(3), .table tbody tr td:last-child {
+    display: table-cell;
+    white-space: nowrap; /* Previene el salto de línea */
+    overflow: hidden; /* Esconde el overflow de texto */
+    text-overflow: ellipsis; /* Añade ellipsis si el texto es demasiado largo */
+    max-width: none; /* Elimina cualquier límite máximo de ancho */
   }
+
+  /* Aplica bordes redondeados a la primera y última columna visible */
+  .table tbody tr td:nth-child(2) {
+    border-radius: 30px 0 0 30px; /* Redondeado correcto para la primera columna visible */
+  }
+
+  .table tbody tr td:last-child {
+    border-radius: 0 30px 30px 0; /* Redondeado correcto para la última columna visible */
+  }
+
+  /* Reducción del tamaño de la fuente para mejorar la visualización en dispositivos móviles */
+  .table, .table th, .table td {
+    font-size: 12px; /* Establece un tamaño de fuente más pequeño para la tabla en móviles */
+  }
+}
+
+
+
+
+
+
 
   .card-item {
     display: flex;

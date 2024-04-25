@@ -1,8 +1,9 @@
+// Importing variables at the top
 @import './content/scss/variables';
-/* ==========================================================================
-Main page styles
-========================================================================== */
 
+/* ==========================================================================
+   Main page styles
+   ========================================================================== */
 .hipster {
   display: inline-block;
   width: 347px;
@@ -10,7 +11,7 @@ Main page styles
   background-size: contain;
 }
 
-/* wait autoprefixer update to allow simple generation of high pixel density media query */
+/* Handling high pixel density displays */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
   only screen and (-moz-min-device-pixel-ratio: 2),
   only screen and (-o-min-device-pixel-ratio: 2/1),
@@ -21,146 +22,91 @@ Main page styles
   }
 }
 
+/* ==========================================================================
+   Dashboard Styles
+   ========================================================================== */
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  padding: 10px; // Uniform padding
 
-@import './content/scss/variables';
-/*    DASHBOARD   */
-.mockup-graph {
-  background-color: white;
-  border-radius: 14px;
-}
-
-.column {
-    flex:1; 
-    height: 100%;
+  .header {
     display: flex;
-    flex-direction: column;
-}
+    justify-content: flex-start;
+    padding: 10px 20px;
+    align-items: center;
+    max-height: 40px;
+    .icon {
+      margin-right: 10px;
+    }
+  }
 
-.dash-block {
-    position: relative;
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    > div {
+      flex: 1 0 100px;
+      max-width: 200px;
+      margin: 5px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: hsl(0, 0.20%, 90%);
+      }
+
+      &.planta {
+        background: rgb(228, 228, 228);
+        border-radius: 14px;
+        text-align: center;
+        height: 160px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+        transition: all 0.3s;
+        
+        &:hover {
+          transform: scale(0.9);
+          background-color: hsl(184, 52%, 90%);
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          .name {
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+
+  .column-block {
+    flex-direction: row;
+    display: flex;
+    height: 100%;
+  }
+
+  .alert-list {
     display: flex;
     flex-direction: column;
     flex: 1;
-}
+    align-items: center;
+    justify-content: center;
 
-
-.dashboard {
-    display: flex;
-    flex-direction: row;
-
-    .header {
-        position: relative;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 10px 20px;
-        max-height: 40px;
-
-        .icon {
-            margin-right: 10px;
-        }
-    }
-
-    .grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        
-        > div {
-            flex: 1 0 100px;
-            max-width: 200px;
-            max-height: 200px;
-            margin: 5px;
-
-            &:hover {
-                background-color: hsl(0, 0.20%, 90%);
-            }
-
-            &.planta {
-                background: rgb(228, 228, 228);
-                border-radius: 14px;
-                text-align: center;
-                height: 160px;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-                transition: all 0.3s;
-
-                &:hover {
-                    transform: scaleX(90%) scaleY(90%);
-                    background-color: hsl(184, 52%, 90%);
-                }
-                
-                .info {
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-end;
-
-                    * {
-                        color: black;
-                    }
-    
-                    .name {
-                        font-size: 18px;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                    }
-                }
-            }
-        }
-    }
-
-    .column-block {
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .block-50 {
-        display: grid; // grid
-        grid-template-rows: auto; // 50% 50%
-        height: 100%;
-    }
-
-    .block-title {
-        font-size: 17px;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .plantas {
-        display: flex;
-        flex-direction: row;
-        
-
-        .planta {
-            display: flex;
-            flex-direction: column;
-            min-width: 100px;
-            height: 200px;
-            flex-wrap: wrap;
-        }
-    }
-
-    /*    ALERT BLOCK   */
-    .alert-list {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-    
-        .alert-block {
-        color: black;
+    .alert-block {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 8px 6px  8px 20px;
+        padding: 8px 6px 8px 20px;  // Asymmetrical padding
         border-radius: 14px;
         margin: 6px;
         cursor: pointer;
-    
+        transition: background-color 0.3s;
+        color: black;
+
         .continue-icon {
             background-color: $grey_bg;
             border-radius: 14px;
@@ -169,105 +115,75 @@ Main page styles
             justify-content: center;
             align-items: center;
             max-height: 24px;
-            
             .icon {
-            padding: 4px;
+                padding: 4px;
             }
         }
 
         .title {
             display: block;
-    
             .name {
                 font-weight: 400;
             }
         }
-    
+
         .info {
             padding: 2px;
         }
-    
+
         &.warning {
             background-color: $warning;
             &:hover {
                 background-color: hsl(41, 100%, 83%);
             }
         }
-    
+
         &.error {
             background-color: $error;
             &:hover {
                 background-color: hsl(19, 94%, 84%);
             }
         }
-    
+
         &.critical {
             background-color: $critical;
             &:hover {
                 background-color: hsl(2, 100%, 83%);
-;
             }
         }
-    
+
         &.informative {
             background-color: $green_list_item;
-
             &:hover {
                 background-color: hsl(184, 20%, 84%);
             }
         }
-    
-        }
     }
 }
 
-
-.chartItem {  
-    flex-grow : 1;  
 }
 
+/* Responsive Media Queries */
 @media only screen and (max-width: 58.75em) {
-    .dashboard { 
-        .column-block {
-            flex-direction: column;
-            padding-bottom: 30px;
-        }
+  .dashboard .column-block {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard {
+    .grid > div {
+      flex: 1 0 50%; // Adjusting for smaller screens
+      max-width: 50%;
+    }
+    .mockup-graph {
+      margin-top: 20px; 
     }
   }
+}
 
-
-  @media only screen and (max-width: 768px) {
-    .dashboard {
-
-
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            
-            > div {
-                flex: 1 0 400px;
-                background-color: red;
-                max-width: 500px;
-                margin: 5px;
-            }
-        }
-    }
-
+@media only screen and (max-width: 942px) {
+  .dashboard .column {
+    margin-bottom: 20px;
   }
-
-  @media only screen and (max-width: 942px) {
-        .dashboard {
-    
-            .column {
-                margin-bottom: 20px;
-            }
-
-            .mockup-graph {
-                // add margin in mobile 
-                margin-top: 20px; 
-            }
-        }
-  }
-
-
-  
+}
